@@ -6,7 +6,7 @@
   <title>TRANG WEB ĐỒ ÁN LẬP TRÌNH WEB1 CỦA 1460510 VÀ 1460653</title>
   <link rel="stylesheet" href="">
   <link rel="stylesheet" href="JsCssCapcha/bootstrap.min.css"/>
-  <link rel="stylesheet" type="text/css" href="JsCssCapcha/1460653_BTCN03_css.css"/>
+  <link rel="stylesheet" type="text/css" href="JsCssCapcha/doan_css.css"/>
   <link rel="stylesheet" href="JsCssCapcha/bootstrap-theme.min.css"/>
   <script src="JsCssCapcha/modernizr-2.8.3-respond-1.4.2.min.js"></script>
   <style type="text/css">
@@ -21,7 +21,24 @@
   <div class="row">
     <div class="col-lg-10">
       <?php
+      if (isset($_GET["act"])) {
+        switch ($_GET["act"]) {
+          case "themcpu":
+            include_once "./_themCPU.php";
+            break;
+          case "themnsx":
+            include_once "./_themHangSX.php";
+            break;
+          case "themngdung":
+            include_once "./_themNguoiDung.php";
+            break;
+          default:
+            echo "CHỨC NĂNG ĐANG TRONG QUÁ TRÌNH XÂY DỰNG. MONG MẤY CHẾ THÔNG CẢM.";
+            break;
+        }
+      } else {
         include_once "./_themSP.php";
+      }
       ?>
     </div>
     <div class="col-lg-2 text-right">

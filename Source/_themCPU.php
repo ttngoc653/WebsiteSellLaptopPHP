@@ -12,7 +12,7 @@
 		$f_ten=$_POST['loai'];
 		$rs = ConnectQuery("select * from cpu where loai = '".$f_ten."'");
 		if(0 == $rs->num_rows){
-			echo "insert INTO cpu(hangsx, congnghe, loai, tocdo, thongtinbodem, tocdotoida, an) VALUES ('".$_POST['hangsx']."','".$_POST['congnghe']."','".$f_ten."','".$_POST['tocdo']."','".$_POST['thongtinbodem']."','".$_POST['tocdotoida']."','0')";
+			//echo "insert INTO cpu(hangsx, congnghe, loai, tocdo, thongtinbodem, tocdotoida, an) VALUES ('".$_POST['hangsx']."','".$_POST['congnghe']."','".$f_ten."','".$_POST['tocdo']."','".$_POST['thongtinbodem']."','".$_POST['tocdotoida']."','0')";
 			$rs=ConnectQuery("insert INTO cpu(hangsx, congnghe, loai, tocdo, thongtinbodem, tocdotoida, an) VALUES ('".$_POST['hangsx']."','".$_POST['congnghe']."','".$f_ten."','".$_POST['tocdo']."','".$_POST['thongtinbodem']."','".$_POST['tocdotoida']."','0')");
 			echo "đã thêm CPU $f_ten thành công";
 		}
@@ -140,11 +140,11 @@
 			document.forms['frmCPUthem'].tocdotoida.focus();
 			return false;
 		} else {
-			alert("dax towsi ddaay");
+			//alert("dax towsi ddaay");
 			//return true;
 		}
 
-			alert("dax towsi ddaay cuoosi");
+			//alert("dax towsi ddaay cuoosi");
 		return true;
 	}
 </script>

@@ -2,10 +2,12 @@
   require_once ('hamKetNoiCSDL.php'); 
 ?>
 <div>
-  <h1 class="tieude">THÊM SẢN PHẨM</h1>
+  <h1 class="tieude">THÊM SẢN PHẨM</h1><br/>
 </div>
-<br/>
-<i><div style="color: red;font-size: 16px;text-align: center;" >
+<form class="form-horizontal" name="themSanPham" enctype="multipart/form-data" action="" method="post" onsubmit="return ktradieukien();">
+<p>
+<div class="form-group">
+<i><div class="col-sm-8" style="color: red;font-size: 16px;text-align: center;" >
 <?php 
   if(isset($_POST['guiSP'])) {
     
@@ -31,7 +33,10 @@
       if(isset($_POST['tinhnangbosung'])){
         $f_dacbiet=$_POST['tinhnangbosung'];
       }
+      //echo "insert INTO san_pham(masp, tensp, hangsx, gia, icon, mau, loaicpu, ramdungluong, ramloai, rambus, kichthuocmh, dophangiai, cnmanhinh, manhinhcamung, tencartmanhinh, congngheamthanh, oquang, usb, dhmi, cart, ketnoikhac, morong, wifi, lan, bluetooth, camera, pin, hdh, khoiluong, dai, rong, day, chatlieu, slkho, luotview, an) values (null,'".$f_ten."','".$_POST['hangsx']."','".$_POST['gia']."','".basename($_FILES["file0"]["name"])."','".$_POST['mausac']."','".$_POST['cpu']."','".$_POST['ramdl']."','".$_POST['ramloai']."','".$_POST['rambus']."','".$_POST['kichthuoc']."','".$f_dophangiai."','".$_POST['congnghemh']."','".$_POST['camung']."','".$_POST['carddh']."','".$_POST['congngheat']."','".$_POST['oquang']."','".$_POST['usb']."','$f_hdmi','$f_docthe','".$_POST['cother']."','$f_dacbiet','".$_POST['wifi']."','".$_POST['lan']."','".$_POST['bluetooth']."','".$_POST['camera']."','".$_POST['pin']."','".$_POST['hdh']."','".$_POST['nang']."','".$_POST['dai']."','".$_POST['rong']."','".$_POST['day']."','".$_POST['chlieu']."','".$_POST['slhienco']."','0','0')";
+
       $rs=ConnectQuery("insert INTO san_pham(masp, tensp, hangsx, gia, icon, mau, loaicpu, ramdungluong, ramloai, rambus, kichthuocmh, dophangiai, cnmanhinh, manhinhcamung, tencartmanhinh, congngheamthanh, oquang, usb, dhmi, cart, ketnoikhac, morong, wifi, lan, bluetooth, camera, pin, hdh, khoiluong, dai, rong, day, chatlieu, slkho, luotview, an) values (null,'".$f_ten."','".$_POST['hangsx']."','".$_POST['gia']."','".basename($_FILES["file0"]["name"])."','".$_POST['mausac']."','".$_POST['cpu']."','".$_POST['ramdl']."','".$_POST['ramloai']."','".$_POST['rambus']."','".$_POST['kichthuoc']."','".$f_dophangiai."','".$_POST['congnghemh']."','".$_POST['camung']."','".$_POST['carddh']."','".$_POST['congngheat']."','".$_POST['oquang']."','".$_POST['usb']."','$f_hdmi','$f_docthe','".$_POST['cother']."','$f_dacbiet','".$_POST['wifi']."','".$_POST['lan']."','".$_POST['bluetooth']."','".$_POST['camera']."','".$_POST['pin']."','".$_POST['hdh']."','".$_POST['nang']."','".$_POST['dai']."','".$_POST['rong']."','".$_POST['day']."','".$_POST['chlieu']."','".$_POST['slhienco']."','0','0')");
+
       $id =SearchIDLap($f_ten);
       $rs=ConnectQuery("insert into o_dia_cung values ('$id','".$_POST['odia1']."','".$_POST['odia1dl']."','0')");
       if(isset($_POST['odia2'])){
@@ -39,12 +44,20 @@
           $rs=ConnectQuery("insert into o_dia_cung values ('$id','".$_POST['odia2']."','".$_POST['odia2dl']."','0')");
         }
       }
+
+      echo "<p>id của máy là: $id</p>";
+      $thumuc="image/".$id;
+      if (!is_dir($thumuc))
+      {
+        mkdir($thumuc,0777);
+      }
+      //}
+
       $thumuc="image/".$id."/";
-      mkdir($thumuc,0777);
       $duongdanfile = $thumuc."/".basename($_FILES["file0"]["name"]);
       if (move_uploaded_file($_FILES['file0']['tmp_name'], $duongdanfile)) {
       } else {
-          echo "<p>tải ảnh đại diện sản phẩm lên  thất bại </p>";
+          echo "<p>tải ảnh đại diện sản phẩm lên thất bại </p>";
       }
 
       $rs=ConnectQuery("insert into hinh_anh_sp values ('".$id."','".basename($_FILES['file1']['name'])."')");
@@ -77,17 +90,17 @@
       } else {
           echo "<p>tải ảnh chi tiết 3 lên thất bại </p>";
       }
-      echo "</div>";
     }
     else{
       echo "đã có laptop $f_ten trong dữ liệu";
     }
   }
 ?>
-<div style="color: red;font-size: 16px;text-align: center;" id="thongbaoloi">
+<div class="col-sm-8" style="color: red;font-size: 16px;text-align: center;" id="thongbaoloi">
 </div>
 </div></i>
-<form class="form-horizontal" name="themSanPham" enctype="multipart/form-data" action="" method="post" onsubmit="return ktradieukien();">
+</p>
+</div>
 <fieldset>
 
 <!-- Form Name -->
@@ -119,7 +132,7 @@
                }
             ?>
     </select>
-  <span class="help-block" style="color: red; font-size: 12px;">nếu không có trong sự lựa chọn này thì hãy thêm hãng sản xuất <a href="themHangSanXuat.php" target="_blank">tại đây</a></span>  
+  <span class="help-block" style="color: red; font-size: 12px;">nếu không có trong sự lựa chọn này thì hãy thêm hãng sản xuất <a href="index.php?act=themnsx" target="_blank">tại đây</a></span>  
   </div>
 </div>
 
@@ -162,7 +175,7 @@
       	}
       ?>
     </select>
-    <span class="help-block" style="color: red; font-size: 12px;" >nếu không có thì hãy thêm cpu <a href="themCPU.php" target="_blank">tại đây</a></span>  
+    <span class="help-block" style="color: red; font-size: 12px;" >nếu không có thì hãy thêm cpu <a href="index.php?act=themcpu" target="_blank">tại đây</a></span>  
   </div>
 </div>
 
@@ -214,7 +227,7 @@
       	}
       ?>
     </select>
-     <span class="help-block" style="color: red; font-size: 12px;">nếu không có trong sự lựa chọn trong này thì hãy thêm card Màn hình <a href="themCardManHinh.php" target="_blank">tại đây</a></span>  
+     <span class="help-block" style="color: red; font-size: 12px;">nếu không có trong sự lựa chọn trong này thì hãy thêm card Màn hình <a href="index.php?act=themcartmh" target="_blank">tại đây</a></span>  
   </div>
   <div class="form-group">
     <label class="col-sm-4 control-label" for="congngheat">Công nghệ âm thanh</label>  
@@ -787,19 +800,7 @@ function ktradieukien(){
     return false;  
   }
   else {
-    var dem = 0;
-    if(testFile0())
-      dem=dem+1;
-    if(testFile1())
-      dem=dem+1;
-    if(testFile2())
-      dem=dem+1;
-    if(testFile3())
-      dem=dem+1;
-    if(testFile4())
-      dem=dem+1;
-    if(dem!=0)
-      return false;
+    }
     if(document.getElementById("file0").value.length==0){
       thongbao.innerHTML+='chưa chọn file ảnh đại diện cho LAPTOP.';
       document.forms['themSanPham'].file0.focus();
@@ -825,6 +826,10 @@ function ktradieukien(){
       document.forms['themSanPham'].file4.focus();
       return false;
     }
+    thongbao.innerHTML+='lalala true1';
+    return true;
   }
+  thongbao.innerHTML+='lala true2';
+  return true;
 }
 </script>

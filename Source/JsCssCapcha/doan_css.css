@@ -1,0 +1,36 @@
+p.heading{
+	background-color: #4d7080;
+	margin: 0 auto;
+	align-items: center;
+}
+button{
+	border:none;
+	height: 41px;
+	font-size: 14px;
+	color: white;
+	background-color: #4d7080;
+	display: inline-block;
+}
+	button:hover{
+		background-color: green;
+		font-size: 14px;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+div .showchanWeb{
+ 	min-height: 128px;
+ 	background: yellow;
+ 	text-align: center;
+}
+ .tieude{
+	color: blue;
+	text-align: center;
+}
+.thongbaoloi{
+	color: red;
+	font-size: 16px;
+	text-align: center;
+}
+legend h2{
+	text-align: center;
+}
