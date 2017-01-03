@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 25, 2016 lúc 02:14 CH
+-- Thời gian đã tạo: Th1 03, 2017 lúc 04:01 SA
 -- Phiên bản máy phục vụ: 5.7.14
 -- Phiên bản PHP: 5.6.25
 
@@ -40,7 +40,10 @@ CREATE TABLE `cart_man_hinh` (
 INSERT INTO `cart_man_hinh` (`tencart`, `dungluong`, `thietke`, `an`) VALUES
 ('Intel&reg; HD Graphics', 0, 'tích hợp với RAM', 0),
 ('NVIDIA&reg; GeForce&reg; 840M', 2, 'rời (Optimus)', 0),
-('Intel&reg; Iris™ Pro Graphics', 0, 'đồ họa tích hợp', 0);
+('Intel&reg; Iris™ Pro Graphics', 0, 'đồ họa tích hợp', 0),
+('NVIDIA&reg; GeForce&reg; 920M', 2, 'Cart đồ họa rời', 0),
+('AMD Radeon R5 M420', 2, 'Card đồ họa rời', 0),
+('NVIDIA GeForce 940MX', 2, 'Card đồ họa rời', 0);
 
 -- --------------------------------------------------------
 
@@ -97,7 +100,10 @@ INSERT INTO `cpu` (`hangsx`, `congnghe`, `loai`, `tocdo`, `thongtinbodem`, `tocd
 ('Intel', 'Core i7 Haswell', '4510U', 2, 'Intel&reg; Smart Cache, 4 MB', 3.1, 0),
 ('Intel', 'Core i5 Kabylake', '7200U', 2.5, 'Intel&reg; Smart Cache, 3 MB, L3 Cache', 3.1, 0),
 ('Intel', 'Core i3 Kabylake', '7100U', 2.4, 'Intel&reg; Smart Cache, 3 MB', 2.4, 0),
-('Intel', 'Atom', 'Z3735', 1.33, 'Intel&reg; Smart Cache, 2 MB', 1.83, 0);
+('Intel', 'Atom', 'Z3735', 1.33, 'Intel&reg; Smart Cache, 2 MB', 1.83, 0),
+('Intel', 'Pentium', 'N3700', 1.6, '2 MB', 2.42, 0),
+('Intel', 'Core i7 Kabylake', '7500U', 2.7, 'Intel® Smart Cache, 4 MB', 3.5, 0),
+('Intel', 'Core i5 Skylake', '6267U', 2.9, 'Intel&reg; Smart Cache, 4 MB', 3.3, 0);
 
 -- --------------------------------------------------------
 
@@ -158,9 +164,58 @@ CREATE TABLE `hinh_anh_sp` (
 --
 
 INSERT INTO `hinh_anh_sp` (`masp`, `tenfile`) VALUES
-(27, '5XRvfRI.jpg'),
-(27, '133236_1600x1200.jpg'),
-(27, '503729799335_44.jpg');
+(28, 'dell-inspiron-3552-v5c008w-9.jpg'),
+(28, 'dell-inspiron-3552-v5c008w-2.jpg'),
+(28, 'dell-inspiron-3552-v5c008w-10.gif'),
+(28, 'dell-inspiron-3552-v5c008w-21.jpg'),
+(29, 'dell-inspiron-3452-n3700-4gb-500gb-win10-7-1.jpg'),
+(29, 'dell-inspiron-3452-n3700-4gb-500gb-win10-1-2.jpg'),
+(29, 'dell-inspiron-3452-n3700-4gb-500gb-win10-3.jpg'),
+(29, 'dell-inspiron-3452-n3700-4gb-500gb-win10-4-2.jpg'),
+(30, 'dell-vostro-3468-i3-7100u-6.jpg'),
+(30, 'dell-vostro-3468-i3-7100u-3.jpg'),
+(30, 'dell-vostro-3468-i3-7100u-4.jpg'),
+(30, 'dell-vostro-3468-i3-7100u-2.jpg'),
+(31, 'dell-inspiron-3467-i5-7200u-c4i5107w-5.jpg'),
+(31, 'dell-inspiron-3467-i5-7200u-c4i5107w-3.jpg'),
+(31, 'dell-inspiron-3467-i5-7200u-c4i5107w-3-1.jpg'),
+(31, 'dell-inspiron-3467-i5-7200u-c4i5107w-2-1.jpg'),
+(32, 'dell-vostro-3568-xf6c62-8.jpg'),
+(32, 'dell-vostro-3568-xf6c62-2.jpg'),
+(32, 'dell-vostro-3568-xf6c62-3-1.jpg'),
+(32, 'dell-vostro-3568-xf6c62-2-1.jpg'),
+(33, 'dell-inspiron-7460-n4i5259w-9.jpg'),
+(33, 'dell-inspiron-7460-n4i5259w-7.jpg'),
+(33, 'dell-inspiron-7460-n4i5259w-5.jpg'),
+(33, 'dell-inspiron-7460-n4i5259w-8.jpg'),
+(34, 'apple-macbook-air-2015-mjve2zp-a-i5-5250u-4gb-128g-bv-6.jpg'),
+(34, 'apple-macbook-air-2015-mjve2zp-a-i5-5250u-4gb-128g-bv-7.jpg'),
+(34, 'apple-macbook-air-2015-mjve2zp-a-i5-5250u-4gb-128g-bv-8.jpg'),
+(34, 'apple-macbook-air-2015-mjve2zp-a-i5-5250u-4gb-128g-bv-9.jpg'),
+(35, 'apple-macbook-air-2015-mmgg2zp-a-i5-5250u-8gb-256g-7.jpg'),
+(35, 'apple-macbook-air-2015-mmgg2zp-a-i5-5250u-8gb-256g-4.jpg'),
+(35, 'apple-macbook-air-2015-mmgg2zp-a-i5-5250u-8gb-256g-5.jpg'),
+(35, 'apple-macbook-air-2015-mmgg2zp-a-i5-5250u-8gb-256g-6.jpg'),
+(36, 'apple-macbook-pro-2015-mf839zp-a-i5-5257u-8gb-128g-1-1.jpg'),
+(36, 'apple-macbook-pro-2015-mf839zp-a-i5-5257u-8gb-128g-2-1.jpg'),
+(36, 'apple-macbook-pro-2015-mf839zp-a-i5-5257u-8gb-128g-8.jpg'),
+(36, 'apple-macbook-pro-2015-mf839zp-a-i5-5257u-8gb-128g-4.jpg'),
+(37, 'apple-macbook-12-mlh72-core-m-11g-8gb-256gb-macos-4.jpg'),
+(37, 'apple-macbook-12-mlh72-core-m-11g-8gb-256gb-macos--1.jpg'),
+(37, 'apple-macbook-12-mlh72-core-m-11g-8gb-256gb-macos--5.jpg'),
+(37, 'apple-macbook-12-mlh72-core-m-11g-8gb-256gb-macos--4.jpg'),
+(38, 'apple-macbook-pro-2015-mf839zp-a-i5-5257u-8gb-128g-1-11.jpg'),
+(38, 'apple-macbook-pro-2015-mf839zp-a-i5-5257u-8gb-128g-6-1.jpg'),
+(38, 'apple-macbook-12-mlh72-core-m-11g-8gb-256gb-macos--4.jpg'),
+(38, 'apple-macbook-pro-2015-mf840zp-7.jpg'),
+(39, 'apple-macbook-12-mlhf2-core-m-12g-8gb-512gb-macos--5.jpg'),
+(39, 'apple-macbook-12-mlhf2-core-m-12g-8gb-512gb-macos--12.jpg'),
+(39, 'apple-macbook-12-mlhf2-core-m-12g-8gb-512gb-macos--13.jpg'),
+(39, 'apple-macbook-12-mlhf2-core-m-12g-8gb-512gb-macos--4.jpg'),
+(40, 'macbook-pro-13-2016-khong-touch-bar1.jpg'),
+(40, 'macbook-pro-13-20162.jpg'),
+(40, 'macbook-pro-13-20165.jpg'),
+(40, 'macbook-pro-13-2016-khong-touch-bar6.jpg');
 
 -- --------------------------------------------------------
 
@@ -205,15 +260,20 @@ CREATE TABLE `o_dia_cung` (
 --
 
 INSERT INTO `o_dia_cung` (`masp`, `loaiocung`, `dungluong`, `an`) VALUES
-(1, 'HDD', 500, 0),
-(2, 'ghj', 345, 0),
-(2, 'jkl', 65, 0),
-(4, 'SII', 500, 0),
-(5, 'HDH', 63, 0),
-(6, 'EEE', 256, 0),
-(5, 'HDH', 63, 0),
-(27, 'SD', 128, 0),
-(27, 'HDD', 256, 0);
+(28, 'HDD', 500, 0),
+(29, 'HDD', 500, 0),
+(30, 'HDD', 1024, 0),
+(31, 'HDD', 1024, 0),
+(32, 'HDD', 1024, 0),
+(33, 'HDD', 500, 0),
+(33, 'SSD', 128, 0),
+(34, 'SSD', 128, 0),
+(35, 'SSD', 256, 0),
+(36, 'SSD', 128, 0),
+(37, 'SSD', 256, 0),
+(38, 'SSD', 256, 0),
+(39, 'SSD', 512, 0),
+(40, 'SSD', 256, 0);
 
 -- --------------------------------------------------------
 
@@ -237,13 +297,13 @@ CREATE TABLE `san_pham` (
   `cnmanhinh` varchar(64) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `manhinhcamung` tinyint(1) NOT NULL DEFAULT '0',
   `tencartmanhinh` varchar(32) COLLATE utf8mb4_vietnamese_ci NOT NULL,
-  `congngheamthanh` varchar(64) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `congngheamthanh` varchar(80) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `oquang` varchar(32) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `usb` int(11) NOT NULL COMMENT '0 hoặc 1',
   `dhmi` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0 hoặc 1',
   `cart` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0 hoặc 1',
   `ketnoikhac` varchar(64) COLLATE utf8mb4_vietnamese_ci NOT NULL,
-  `morong` varchar(64) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `morong` varchar(128) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `wifi` varchar(20) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `lan` varchar(20) COLLATE utf8mb4_vietnamese_ci NOT NULL DEFAULT '10/100 Mbps',
   `bluetooth` varchar(16) COLLATE utf8mb4_vietnamese_ci NOT NULL,
@@ -265,32 +325,19 @@ CREATE TABLE `san_pham` (
 --
 
 INSERT INTO `san_pham` (`masp`, `tensp`, `hangsx`, `gia`, `mau`, `icon`, `loaicpu`, `ramdungluong`, `ramloai`, `rambus`, `kichthuocmh`, `dophangiai`, `cnmanhinh`, `manhinhcamung`, `tencartmanhinh`, `congngheamthanh`, `oquang`, `usb`, `dhmi`, `cart`, `ketnoikhac`, `morong`, `wifi`, `lan`, `bluetooth`, `camera`, `pin`, `hdh`, `khoiluong`, `dai`, `rong`, `day`, `chatlieu`, `slkho`, `luotview`, `an`) VALUES
-(1, 'Inspiron 3542 74514G50G', 'Dell', 17500000, 'đen', '', '4510U', 4, 'DDR3L (1 khe)', 1600, 15.6, '1366x768', 'TrueLife LED-Backlit Display', 0, 'NVIDIA&reg; GeForce&reg; 840M', 'Combo Microphone & Headphone', ' DVD Super Multi Double Layer', 2, 1, 1, 'LAN (RJ45), USB 3.0', ' Multi TouchPad, Battery-Saving Technology', '802.11b/g/n', '10/100 Mbps', '', 0.9, 'Li-Ion 4 cell', 'Windows 10', 2.34, 0, 0, 0, '', 36, 0, 0),
-(2, 'R3 131T-C25D ', 'Acer', 6990000, 'trắng', '', 'N3060', 2, 'DDR3L (1 khe)', 1600, 11.6, '1366x768', 'Active Matrix TFT Colour LCD, LED Backlit, Lật, Xoay 360 độ', 1, 'Intel&reg; HD Graphics', 'Combo Microphone & Headphone 2.0', 'không', 2, 1, 1, 'LAN (RJ45)', '', '802.11b/g/n', '10/100 Mbps', '', 0.3, 'Li-Ion 4 cell', 'Windows 10', 1.58, 0, 0, 0, '', 20, 0, 0),
-(3, 'Macbook Air MJVM2ZP/A', 'Apple', 21990000, 'bạc', '', '5250U', 4, 'DDR3L', 1600, 11.6, '1366x768', 'LED Backlit', 0, 'Intel&reg; HD Graphics', '2.0', 'không', 2, 0, 0, 'MagSafe 2, Thunderbolt 2', '', '802.11a/b/g/n', 'không', '', 1.3, 'Lithium-polymer', 'Mac OS', 1.08, 0, 0, 0, '', 20, 0, 0),
-(4, 'Macbook MLHF2', 'Apple', 37990000, 'vàng', '', 'CoreM', 8, 'DDR3', 1866, 12, '2304x1440', 'IPS, LED Backlit, Retine', 0, 'Intel&reg; HD Graphics', '2.0, Speakers Stereo', 'không', 1, 0, 0, 'USB Type-C', 'Force Touch, Backlit keyboard, Micro kếp', '802.11 a/b/g/n/ac', 'không', '', 1.3, '~ 10 giờ', 'Mac OS', 0.9, 0, 0, 0, '', 20, 0, 0),
-(5, 'Macbook MF840ZP/A', 'Apple', 35990000, 'bạc', '', '5257U', 8, 'DDR3', 1866, 13.3, '2560x1600', 'LED Backlit', 0, 'Intel&reg; HD Graphics', '2.0', 'không', 2, 1, 1, 'MagSafe 2, Thunderbolt 2', 'Micro kép', '208.11a/b/g/n', 'không', '', 1.3, '~10 giờ', 'Mac OS', 1.58, 0, 0, 0, '', 20, 0, 0),
-(6, 'Macbook Air MMGF2ZP/A', 'Apple', 23990000, 'bạc', '', '5250U', 8, 'DDR3L', 1600, 13.3, '1440x900', 'LED Backlit', 0, 'Intel HD Graphics', '2.0 Combo Microphone & Headphone', 'không', 2, 0, 1, 'MagSafe 2, 2 x USB 3.0, Thunderbolt 2', 'Micro kép', '802.11a/b/g/n', 'không', '', 1.3, 'Lithium- polymer', 'Mac OS', 1.35, 0, 0, 0, '', 20, 0, 0),
-(7, 'Macbook Pro MJLQ2ZP/A', 'Apple', 46990000, 'bạc', '', '4770HQ', 16, 'DDR3L', 1600, 15.4, '2880x1800', 'Công nghệ IPS, LED Backlit, Retina', 0, 'Intel&reg; Iris Pro Graphics', '2.0, Speakers Stereo', 'không', 2, 1, 1, 'MagSafe 2, USB 3.0, Thunderbolt 2', 'Backlit keyboard, Micro kép', '802.11 ac', 'không', '', 1.3, '~ 9 giờ', 'Mac OS', 2.04, 0, 0, 0, '', 20, 0, 0),
-(8, 'Inspiron 3458 i3', 'Dell', 10290000, 'đen', '', '5005U', 4, 'DDR3L (1 khe)', 1600, 14, '1366x768', 'HD, TrueLife LED-Backlit Display', 0, 'Intel&reg; HD Graphics', '2.0', 'không', 3, 1, 1, 'LAN (RJ45)', '', '802.11b/g/n', '10/100 Mbps', '', 0.9, 'Li-Ion 4 cell', 'Windows 10', 1.8, 0, 0, 0, '', 20, 0, 0),
-(9, 'Vostro 3568 i5', 'Dell', 14990000, 'đen', '', '7200U', 4, 'DDR4 (1 khe)', 2133, 15.6, '1366x768', 'TrueLife LED-Backlit Display', 0, 'AMD Radeon R5 M420', '2.0, Waves MaxxAudio, Speakers Stereo', 'DVD Super Multi Double Layer', 3, 1, 1, 'LAN (RJ45), VGA (D-Sub)', 'Multi TouchPad, Fingerprint', '802.11b/g/n', '10/100/1000 Mbps', 'v4.0', 0.9, 'Li-Ion 4 cell', 'Windows 10', 2.18, 0, 0, 0, '', 20, 0, 0),
-(10, 'Inspiron 3552 N3060', 'Dell', 6690000, 'đen', '', 'N3060', 4, 'DDR3L (1 khe)', 1600, 15.6, '1366x768', 'TrueLife LED-Backlit Display', 0, 'Intel&reg; HD Graphics', '2.0, Speakers Stereo, Combo Microphone & Headphone', 'DVD Super Multi Double Layer', 3, 1, 1, '', 'Multi TouchPad', '802.11b/g/n', 'không', 'v4.0', 0.3, 'Li-Ion 4 cell', 'Windows 10', 2.14, 0, 0, 0, '', 20, 0, 0),
-(11, 'Vostro 5568 i3', 'Dell', 14490000, 'xám', '', '7100U', 4, 'DDR4 (2 khe)', 2400, 15.6, '1366x768', 'TrueLife LED-Backlit Display', 0, 'NVIDIA GeForce 940MX', '2.0, Waves MaxxAudio, Speakers Stereo', 'không', 4, 1, 1, 'LAN (RJ45), VGA (Dongle)', 'Backlit keyboard, Fingerprint', '802.11 ac', '10/100/1000 Mbps', 'v4.0', 1, 'Li-Ion 3 cell', 'Windows 10', 1.98, 0, 0, 0, '', 20, 0, 0),
-(12, 'E402SA ', 'Asus', 6290000, 'xanh dương', '', 'N3060', 2, 'DDR3', 1600, 14, '1366x768', 'ASUS Splendid Video, LED Backlit', 0, 'Intel&reg; HD Graphics', '2.0, SonicMaster audio,Speakers Stereo', 'không', 2, 1, 1, 'LAN (RJ45), VGA (D-Sub)', 'Instant On', '802.11b/g/n', '10/100 Mbps', 'không', 0.3, 'Li-Ion 2 cell', 'Windows 10', 1.65, 0, 0, 0, '', 20, 0, 0),
-(13, 'A456UA', 'Asus', 12490000, 'vàng', '', '6200U', 4, 'DDR3L(1Khe)', 1600, 14, '1366x768', 'LED Backlit, ASUS Splendid Video', 0, 'Intel&reg; HD Graphics', '2.0, Speakers Stereo, SonicMaster audio', 'DVD Super Multi Double Layer', 2, 1, 1, 'LAN (RJ45), USB Type-C, VGA (D-Sub)', 'Instant On, Ice Cool', '802.11b/g/n', '10/100/1000 Mbps', 'v4.0', 0.3, 'Li-Ion 2 cell', 'Windows 10', 2.1, 0, 0, 0, '', 20, 0, 0),
-(14, 'A541UV', 'Asus', 16290000, 'đen', '', '6500U', 4, 'DDR4 (1 khe)', 2133, 15.6, '1366x768', 'HD, LED Backlit, ASUS Splendid Video', 0, 'NVIDIA GeForce 920MX', '2.0, SonicMaster audio, Speakers Stereo', 'DVD Super Multi Double Layer', 2, 1, 1, 'LAN (RJ45), VGA (D-Sub)', 'Ice Cool', '802.11b/g/n', '10/100/1000 Mbps', 'v4.0', 0.3, 'Li-Ion 3 cell', 'Windows 10', 2, 0, 0, 0, '', 20, 0, 0),
-(15, 'TP201SA', 'Asus', 9490000, 'xám', '', 'N3710', 4, 'DDR3L', 1600, 11.6, '1366x768', 'HD, IPS, ASUS Splendid Video, LED Backlit, Lật, Xoay 360 độ', 1, 'Intel&reg; HD Graphics', '2.0, SonicMaster audio, Speakers Stereo', 'không', 2, 1, 1, 'USB Type-C', 'Touchscreen, Ice Cool, Multi TouchPad', '802.11 ac', '10/100 Mbps', 'v4.1', 0.3, 'Li-Ion 3 cell', 'Windows 10', 1.39, 0, 0, 0, '', 20, 0, 0),
-(16, 'A540LA', 'Asus', 10490000, 'đen', '', '5005U', 4, 'DDR3L (1 khe)', 1600, 15.6, '1920x1080', 'FHD, ASUS Splendid Video, LED Backlit', 0, 'Intel HD Graphics', '2.0, Speakers Stereo, SonicMaster audio', 'DVD Super Multi Double Layer', 2, 1, 1, 'LAN (RJ45), USB Type-C, VGA (D-Sub)', 'Instant On', '802.11 a/b/g/n/ac', '10/100 Mbps', 'v4.0', 0.3, 'Li-Ion 3 cell', 'Windows 10', 1.9, 0, 0, 0, '', 20, 0, 0),
-(17, 'ES1 431', 'Acer', 5990000, 'đen', '', 'N3060', 4, 'DDR3L (1 khe)', 1600, 14, '1366x768', 'Active Matrix TFT Colour LCD', 0, 'Intel HD Graphics', '2.0', 'không', 2, 1, 1, 'LAN (RJ45)', 'Multi TouchPad', '802.11b/g/n', '10/100 Mbps', 'có', 0.3, 'Li-Ion 4 cell', 'Windows 10', 2.1, 0, 0, 0, '', 20, 0, 0),
-(18, 'Aspire Z1402 39KT', 'Acer', 8490000, 'đen', '', '5005U', 4, 'DDR3L (1 khe)', 1600, 14, '1366x768', 'HD, ACER CineCrystal LED Backlit', 0, 'Intel HD Graphics', '2.0, Speakers Stereo', 'không', 2, 1, 1, 'LAN (RJ45)', 'Multi TouchPad', '802.11b/g/n', '10/100 Mbps', 'không', 0.3, 'Li-Ion 3 cell', 'Windows 10', 2.1, 0, 0, 0, '', 20, 0, 0),
-(19, 'Aspire E5 575 50HM', 'Acer', 11990000, 'đen', '', '6200U', 4, 'DDR4 (2 khe)', 2133, 15.6, '1920x1080', 'FHD, ACER CineCrystal LED Backlit', 0, 'Intel HD Graphics', '2.0, Speakers Stereo', 'DVD Super Multi Double Layer', 3, 1, 1, 'LAN (RJ45), USB Type-C, VGA (D-Sub)', 'USB Charge', '802.11b/g/n', '10/100/1000 Mbps', 'v4.0', 1, 'Li-Ion 4 cell', 'Windows 10', 2.23, 0, 0, 0, '', 20, 0, 0),
-(20, 'Aspire F5 573G 55HV', 'Acer', 13990000, 'bạc', '', '7200U', 4, 'DDR4 (2 khe)', 2133, 15.6, '1920x1080', 'FHD, ACER CineCrystal LED Backlit', 0, 'NVIDIA GeForce 940MX', '2.0, Speakers Stereo', 'DVD Super Multi Double Layer', 3, 1, 1, 'LAN (RJ45), USB Type-C, VGA (D-Sub)', 'Multi TouchPad', '802.11b/g/n', '10/100/1000 Mbps', 'v4.0', 1, 'Li-Ion 6 cell', 'Windows 10', 2.4, 0, 0, 0, '', 20, 0, 0),
-(21, 'IdeaPad 100S 11IBY', 'Lenovo', 3990000, 'đỏ, xanh dương, bạc', '', ' Z3735', 2, 'DDR3L', 1600, 11.6, '1366x768', 'HD, LED', 0, 'Intel HD Graphics', '2.0', 'không', 2, 1, 1, '', 'One Key Recovery, Micro kép', '802.11b/g/n', 'không', 'v4.0', 0.3, '2 cell 8.400 mAh', 'Windows 10', 1, 0, 0, 0, '', 20, 0, 0),
-(22, 'IdeaPad 110 14IBR', 'Lenovo', 5490000, 'đen', '', 'N3060', 4, 'DDR3L', 1600, 14, '1366x768', 'HD, LED Backlit', 0, 'Intel HD Graphics', ' Dolby Home Theater, Speakers Stereo', 'không', 2, 1, 1, 'LAN (RJ45)', 'Multi TouchPad, AccuType Keyboard', '802.11b/g/n', '10/100 Mbps', 'v4.0', 0.3, 'Li-Ion 3 cell', 'Windows 10', 2, 0, 0, 0, '', 20, 0, 0),
-(23, 'IdeaPad 100 14IBD', 'Lenovo', 8490000, 'đen', '', '5005U', 4, 'DDR3L (1 khe)', 1600, 14, '1366x768', 'HD, LED Backlit', 0, 'Intel HD Graphics', '2.0, Speakers Stereo', 'không', 2, 1, 1, 'LAN (RJ45)', 'One Key Recovery, AccuType Keyboard', '802.11b/g/n', '10/100 Mbps', 'v4.0', 0.3, 'Li-Ion 2 cell', 'Windows 10', 1.9, 0, 0, 0, '', 20, 0, 0),
-(24, 'Yoga 500', 'Lenovo', 13490000, 'đen', '', '6200U', 4, 'DDR3L (1 khe)', 1600, 14, '1920x1080', 'FHD, cảm ứng điện dung đa điểm, LED Backlit', 1, 'Intel HD Graphics', '2.0, Dolby Home Theater', 'không', 3, 1, 1, 'Micro HDMI, LAN (RJ45)', ' AccuType Keyboard', '802.11b/g/n', '10/100/1000 Mbps', 'v4.0', 0.9, 'Li-Ion 3 cell', 'Wndows 10', 1.8, 0, 0, 0, '', 20, 0, 0),
-(25, 'IdeaPad 710S 13ISK', 'Lenovo', 17990000, 'vàng đồng', '', '6200U', 4, 'DDR3L (2 khe)', 1600, 13.3, '1920x1080', 'Viền màn hình mỏng, LED Backlit', 0, 'Intel HD Graphics', '2.0, Speakers Stereo, Dolby Home Theater, JBL® Stereo Speakers', 'không', 2, 1, 1, 'Micro HDMI', 'One Key Recovery, AccuType Keyboard', '802.11 ac', '10/100/1000 Mbps', 'v4.0', 0.9, '~8 giờ', 'Wndows 10', 1.2, 0, 0, 0, '', 20, 0, 0),
-(27, 'teen masy', 'AMD', 123456, 'xdm', 'Info.png', '5257U', 64, 'DDR', 653, 5, '1245x678', 'HD', 0, 'Intel® Iris™ Pro Graphics', '2.0, ljh', 'không', 1, 0, 1, 'USB Type-C', 'AccyType Keybroad', '801.11', '10/100 Mbps', 'v2.0', 0.3, 'ion 6 cell', 'Windows 8.1', 0.9, 300, 200, 20, 'nhôm đặc biệt', 10, 0, 0);
+(28, 'Inspiron 3552', 'Dell', 6690000, 'đen', 'dell-inspiron-3552-v5c008w-400-400x400.png', 'N3060', 4, 'DDR3L (1 khe)', 1600, 15.6, '1366x768', 'HD, TrueLife LED-Backlit Display', 0, 'Intel® HD Graphics', '2.0 Speakers Stereo, Combo Microphone & Headphone', 'DVD Super Multi Double Layer', 3, 0, 1, '...', 'Multi TouchPad', '802.11 b/g/n', 'không', 'v4.0', 0.3, 'Li-Ion 4 cell', 'Windows 10', 2.14, 380, 260, 22, 'vỏ nhựa', 50, 0, 0),
+(29, 'Inspiron 3452', 'Dell', 7290000, 'đen', 'dell-inspiron-3452-n3700-4gb-500gb-win10-den-180x125-1.png', 'N3700', 4, 'DDR3L (1 khe)', 1600, 14, '1366x768', 'HD, TrueLife LED-Backlit Display', 0, 'Intel® HD Graphics', '2.0, Combo Microphone & Headphone', 'không', 3, 0, 1, '...', 'Multi TouchPad', '802.11 b/g/n', 'không', 'v4.0', 0.9, 'Li-Ion 4 cell', 'Windows 10', 1.9, 345, 243, 21, 'vỏ nhựa', 50, 0, 0),
+(30, 'Vostro 3468', 'Dell', 11490000, 'đen', 'dell-vostro-3468-i3-7100u-400-400x460copy-400x460.png', '7100U', 4, 'DDR4 (1 khe)', 2400, 14, '1366x768', 'HD, TrueLife LED-Backlit Display', 0, 'Intel® HD Graphics', '2.0 Waves MaxxAudio, Combo Microphone & Headphone, Speakers Stereo', 'DVD Super Multi Double Layer', 3, 0, 1, 'LAN (RJ45), VGA (D-Sub)', 'Fingerprint, Multi TouchPad', '802.11 b/g/n', '10/100/1000 Mbps', 'v4.0', 1, 'Li-Ion 4 cell', 'Windows 10', 1.96, 345, 243, 23, 'vỏ nhựa', 50, 0, 0),
+(31, 'Inspiron 3467', 'Dell', 13490000, 'đen', 'dell-inspiron-3467-i5-7200u-c4i5107w-1-400-400x460.png', '7200U', 4, 'DDR4 (1 khe)', 2400, 14, '1366x768', 'HD, TrueLife LED-Backlit Display', 0, 'Intel® HD Graphics', '2.0 Waves MaxxAudio, Combo Microphone & Headphone, Speakers Stereo', 'DVD Super Multi Double Layer', 3, 0, 1, 'LAN (RJ45)', 'Multi TouchPad', '802.11 b/g/n', '10/100/1000 Mbps', 'v4.0', 1, 'Li-Ion 4 cell', 'Windows 10', 1.77, 345, 243, 21, 'vỏ nhựa', 50, 0, 0),
+(32, 'Vostro 3568', 'Dell', 17490000, 'đen', 'dell-vostro-3568-xf6c62-400copycopy-400x400.png', '7500U', 4, 'DDR4 (2 khe)', 2400, 15.6, '1920x1080', 'FHD, TrueLife LED-Backlit Display, Anti-Glare', 0, 'AMD Radeon R5 M420', '2.0 Waves MaxxAudio, Combo Microphone & Headphone, Speakers Stereo', 'DVD Super Multi Double Layer', 3, 0, 1, 'LAN (RJ45), VGA (D-Sub)', 'Fingerprint, Multi TouchPad', '802.11 b/g/n', '10/100/1000 Mbps', 'v4.0', 1, 'Li-Ion 4 cell', 'Windows 10', 2.18, 375, 270, 20, 'vỏ nhựa', 50, 0, 0),
+(33, 'Inspiron 7460', 'Dell', 19490000, 'vàng đồng', 'dell-inspiron-7460-n4i5259w-400-400x460.png', '7200U', 4, 'DDR4 (1 khe)', 2400, 14, '1920x1080', 'FHD, TrueLife LED-Backlit Display, Công nghệ IPS, Anti-Glare', 0, 'NVIDIA GeForce 940MX', '2.0 Waves MaxxAudio, Speakers Stereo', 'không', 3, 0, 1, 'LAN (RJ45)', 'Multi TouchPad', '801.11 ac', '10/100/1000 Mbps', 'v4.2', 1, 'Li-Ion 3 cell', 'Windows 10', 1.7, 323, 227, 19, 'vỏ kim loại', 50, 0, 0),
+(34, 'Air MJVM2ZP/A', 'Apple', 21990000, 'bạc', 'apple-macbook-air-2015-mjvm2zp-a-i5-5250u-4gb-128g-1-121111-400x400.png', '5250U', 4, 'DDR3L (On board)', 1600, 11.6, '1366x768', 'HD, LED Backlit', 0, 'Intel® HD Graphics', '2.0, Combo Microphone & Headphone, Micro Kép', 'không', 2, 0, 0, 'MagSafe 2, Thunderbolt 2', '...', '802.11 a/b/g/n', 'không', 'v4.0', 1.3, 'Lithium-polymer', 'Mac OS', 1.08, 300, 192, 17, 'vỏ kim loại nguyên khối', 50, 0, 0),
+(35, 'Air MMGG2ZP/A', 'Apple', 28990000, 'bạc', 'apple-macbook-air-2015-mmgg2zp-a-i5-5250u-8gb-256g-400-400x400.png', '5250U', 8, 'DDR3L (On board)', 1600, 13.3, '1440x900', 'WXGA+, LED Backlit', 0, 'Intel® HD Graphics', '2.0, Combo Microphone & Headphone, Micro Kép', 'không', 2, 0, 0, 'MagSafe 2, Thunderbolt 2', '...', '802.11 a/b/g/n', 'không', 'v4.0', 1.3, 'Lithium-polymer', 'Mac OS', 1.35, 325, 227, 17, 'vỏ kim loại nguyên khối', 50, 0, 0),
+(36, 'Pro MF839ZP/A', 'Apple', 30590000, 'bạc', 'apple-macbook-pro-2015-mf839zp-a-i5-5257u-8gb-128g-detail-400x400-400x400-400x400.png', '5257U', 8, 'DDR3L (On board)', 1866, 13.3, '2560x1600', 'Retina, LED Backlit', 0, 'Intel® HD Graphics', '2.0, Combo Microphone & Headphone, Micro Kép', 'không', 2, 0, 1, 'MagSafe 2, 2 x Thunderbolt 2', '...', '802.11 a/b/g/n', 'không', 'v4.0', 1.3, '~ 10 giờ', 'Mac OS', 1.58, 314, 219, 18, 'vỏ kim loại nguyên khối', 50, 0, 0),
+(37, '12" MLH72', 'Apple', 31490000, 'xám', 'apple-macbook-12-mlh72-core-m-11g-8gb-256gb-macos-4-400x460.png', 'C.M1.1', 8, 'DDR3 (On board)', 1866, 12, '2304x1440', 'Công nghệ IPS, LED Backlit, Retina', 0, 'Intel® HD Graphics', '2.0 Speakers Stereo, Combo Microphone & Headphone', 'không', 0, 0, 0, 'USB Type-C', 'Force Touch, Backlit keyboard, Micro kép', '802.11 a/b/g/n/ac', 'không', 'v4.0', 1.3, '~ 10 giờ', 'Mac OS', 0.9, 281, 197, 13, 'vỏ kim loại nguyên khối', 50, 0, 0),
+(38, 'Pro MF840ZP/A', 'Apple', 35990000, 'bạc', 'apple-macbook-pro-2015-mf840zp-ssd-400x400.png', '5257U', 8, 'DDR3L (On board)', 1866, 13.3, '2560x1600', 'Retina, LED Backlit', 0, 'Intel® HD Graphics', '2.0, Combo Microphone & Headphone, Micro Kép', 'không', 2, 0, 1, 'MagSafe 2, 2 x Thunderbolt 2', '...', '802.11 a/b/g/n', 'không', 'v4.0', 1.3, '~ 10 giờ', 'Mac OS', 1.58, 314, 219, 18, 'vỏ kim loại', 50, 0, 0),
+(39, '12" MLHF2', 'Apple', 37990000, 'vàng', 'apple-macbook-12-mlhf2-core-m-12g-8gb-512gb-macos-400x400.png', 'C.M1.2', 8, 'DDR3 (On board)', 1866, 12, '2304x1440', 'Công nghệ IPS, LED Backlit, Retina', 0, 'Intel® HD Graphics', '2.0 Speakers Stereo, Combo Microphone & Headphone', 'không', 0, 0, 0, 'USB Type-C', 'Force Touch, Backlit keyboard, Micro kép', '802.11 a/b/g/n/ac', 'không', 'v4.0', 1.3, '~ 10 giờ', 'Mac OS', 0.9, 281, 197, 13, 'vỏ kim loại', 50, 0, 0),
+(40, 'Pro Touch MLVP2SA/A', 'Apple', 43990000, 'bạc', 'macbook-pro-13-2016-mlvp2sa-400-400x460-400x460.png', '6267U', 8, 'DDR4 (On board)', 2133, 13.3, '2560x1600', 'Công nghệ IPS, LED Backlit, Retina', 0, 'Intel® Iris™ Pro Graphics', '2.0 Speakers Stereo, Combo Microphone & Headphone', 'không', 0, 0, 0, '4 x Thunderbolt 3 (USB-C)', 'Touch Bar with integrated Touch ID sensor, Light Sensor, Backlit keyboard, Fingerprint, Force Touch, Multi TouchPad', '802.11 a/b/g/n/ac', 'không', 'v4.2', 1.3, '~ 10 giờ', 'Mac OS', 1.37, 212, 304, 15, 'vỏ kim loại nguyên khối', 50, 0, 0);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -341,7 +388,7 @@ ALTER TABLE `don_hang`
 -- AUTO_INCREMENT cho bảng `san_pham`
 --
 ALTER TABLE `san_pham`
-  MODIFY `masp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `masp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
