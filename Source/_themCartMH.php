@@ -66,7 +66,7 @@
 </fieldset>
 </form>
 	<br><br>
-<form class="form-horizontal" action="" name="frmMHxoa" method="post" accept-charset="utf-8" onsubmit="return ktraXoa()">
+<form class="form-horizontal" action="" name="frmMHxoa" method="post" accept-charset="utf-8" >
 <fieldset>
 <legend><h2>XÓA CART ĐỒ HỌA</h2></legend>
 <div class="form-group">

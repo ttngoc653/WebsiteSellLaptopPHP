@@ -32,6 +32,9 @@
           case "themngdung":
             include_once "./_themNguoiDung.php";
             break;
+          case "themcartmh":
+            include_once "./_themCartMH.php";
+            break;
           default:
             echo "CHỨC NĂNG ĐANG TRONG QUÁ TRÌNH XÂY DỰNG. MONG MẤY CHẾ THÔNG CẢM.";
             break;
