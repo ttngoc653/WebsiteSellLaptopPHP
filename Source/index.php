@@ -18,6 +18,7 @@
 </head>
 <body>
   <?php include_once "./_dauWeb.php"; ?>
+  <br/>
   <div class="row">
     <div class="col-lg-10">
       <?php
@@ -35,12 +36,15 @@
           case "themcartmh":
             include_once "./_themCartMH.php";
             break;
+          case "chitiet":
+            include_once "./_ChitietSP.php";
+            break;
           default:
             echo "CHỨC NĂNG ĐANG TRONG QUÁ TRÌNH XÂY DỰNG. MONG MẤY CHẾ THÔNG CẢM.";
             break;
         }
       } else {
-        include_once "./_themSP.php";
+        include_once "./_trangchu.php";
       }
       ?>
     </div>

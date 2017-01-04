@@ -1,4 +1,4 @@
-<?php require_once './hamKetNoiCSDL.php' ?>
+<?php require_once './hamKetNoiCSDL.php'; ?>
 
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-success" onclick="">

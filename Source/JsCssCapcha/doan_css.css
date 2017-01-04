@@ -34,3 +34,45 @@ div .showchanWeb{
 legend h2{
 	text-align: center;
 }
+
+
+.box{
+	margin:5px;
+	float: left;
+	width: 250px;
+	text-align: center;
+}
+
+.box:nth-child(even){ /*định dạng các block chẳn*/
+	border-top: 5px solid rgb(156,211,165);
+	margin-right: 15px;
+}
+
+.box:nth-child(odd){ /*định dạng các block lẻ*/
+	border-top: 5px solid rgb(119,184,219);
+	margin-left: 15px;
+}
+
+.box img{
+	width: 230px;
+	height: 150px;
+}
+
+.pname{
+	font:bold 14px arial;
+	color:#f39;
+	margin-top: 5px;
+}
+
+.pprice{
+	font:bold 12px arial;
+	color:#f30;
+}
+
+.action{
+	font:italic bold 10px arial;
+	margin-right: 30px;
+	margin-bottom: 10px;
+	color:#f96;
+	text-align: right;
+}
