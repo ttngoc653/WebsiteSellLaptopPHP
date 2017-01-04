@@ -1,10 +1,48 @@
 <?php 
   require_once ('hamKetNoiCSDL.php'); 
 ?>
+
+
+<div>
+  <h1 class="tieude">ẨN SẢN PHẨM</h1><br/>
+</div>
+<form class="form-horizontal" action="" name="xoaSP" method="post" accept-charset="utf-8" >
+<?php 
+  if(isset($_POST['subxoaSP'])) {
+    
+    $f_ten=$_POST['ten'];
+    $rs = ConnectQuery("update san_pham set an=1 where tensp like $f_ten");
+    echo "<p>sản phẩm $f_ten đã ẩn thành công</p>";
+  }
+?>
+<fieldset>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="ten">Chọn sản phẩm muốn ẩn</label>  
+  <div class="col-md-4">      
+    <select id="ten" name="ten" class="form-control">      
+      <?php 
+        $rs= ConnectQuery("select hangsx,tensp from san_pham where an=0 order by hangsx,tensp");
+                    
+        while ($row= $rs->fetch_assoc()){
+            $a=$row["hangsx"]." ".$row["tensp"];
+            ?>
+                <option value="<?php echo $row["tensp"]; ?>"><?php echo $a; ?></option>
+            <?php
+        }
+    ?>
+    </select>
+  </div>
+</div>
+<p><div style="text-align: center;" id="btnSubmit" >
+  <input type="submit" name="subxoaSP" class="btn btn-danger" value="ẨN SẢN PHẨM">
+</div></p>
+</fieldset> 
+</form>
 <div>
   <h1 class="tieude">THÊM SẢN PHẨM</h1><br/>
 </div>
 <form class="form-horizontal" name="themSanPham" enctype="multipart/form-data" action="" method="post" onsubmit="return ktradieukien();">
+<div>
 <p>
 <div class="form-group">
 <i><div class="col-sm-8" style="color: red;font-size: 16px;text-align: center;" >
@@ -45,7 +83,7 @@
         }
       }
 
-      echo "<p>id của máy là: $id</p>";
+      echo "<p>id của máy là: $id - $f_ten</p>";
       $thumuc="image/".$id;
       if (!is_dir($thumuc))
       {
@@ -99,6 +137,7 @@
 <div class="col-sm-8" style="color: red;font-size: 16px;text-align: center;" id="thongbaoloi">
 </div>
 </div></i>
+</div>
 </p>
 </div>
 <fieldset>
@@ -293,7 +332,7 @@
 <div class="form-group">
   <label class="col-sm-4 control-label" for="congnghemh">Công nghệ màn hình</label>
   <div class="col-sm-4">                     
-    <textarea class="form-control" id="congnghemh" name="congnghemh">HD</textarea>
+    <input id="congnghemh" name="congnghemh" type="text" placeholder="vd: HD, ..." class="form-control input-md">
   </div>
 </div>
 
@@ -349,7 +388,6 @@
     </label>
   </div>
 </div>
-
 <!-- Text input-->
 <div class="form-group">
   <label class="col-sm-4 control-label" for="cother">Các cổng khác hỗ trợ</label>  
@@ -512,7 +550,6 @@
     <p><div id="tbfile2" style="color: red;font-size: 12px;"></div></p>
   </div>
 </div>
-
 <!-- File Button --> 
 <div class="form-group">
   <label class="col-sm-4 control-label" for="file3">Ảnh chi tiết 2</label>
@@ -521,7 +558,6 @@
     <p><div id="tbfile3" style="color: red;font-size: 12px;"></div></p>
   </div>
 </div>
-
 <!-- File Button --> 
 <div class="form-group">
   <label class="col-sm-4 control-label" for="file4">Ảnh chi tiết 3</label>
@@ -537,7 +573,6 @@
 </div>
 </form>
 <script language="javascript" type="text/javascript">
-
 function testFile0(){
   document.getElementById("tbfile0").innerHTML = "";
   var x = document.getElementById("file0");
@@ -800,7 +835,6 @@ function ktradieukien(){
     return false;  
   }
   else {
-    }
     if(document.getElementById("file0").value.length==0){
       thongbao.innerHTML+='chưa chọn file ảnh đại diện cho LAPTOP.';
       document.forms['themSanPham'].file0.focus();
