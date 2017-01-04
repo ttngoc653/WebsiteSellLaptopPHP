@@ -1,8 +1,6 @@
 <?php 
   require_once ('hamKetNoiCSDL.php'); 
 ?>
-
-
 <div>
   <h1 class="tieude">ẨN SẢN PHẨM</h1><br/>
 </div>
