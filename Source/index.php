@@ -16,7 +16,7 @@
     }
   </style>
 </head>
-<body>
+<body background="./image/resized-116.jpg" style="background-attachment :fixed; background-repeat: repeat;">
   <?php include_once "./_dauWeb.php"; ?>
   <br/>
   <div class="row">
