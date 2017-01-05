@@ -24,48 +24,103 @@
 		}
 ?>
 	<form action="" method="post" onsubmit="return check_submit_nguoi_dung()">
-		<table>
-			<tr>
-				<td colspan="2">Form dang ky</td>
-			</tr>	
-			<tr>
-				<td>Username :</td>
-				<td><input type="text" id="tendn" name="tendn"></td>
-			</tr>
-			<tr>
-				<td>Password :</td>
-				<td><input type="text" id="mk" name="mk"></td>
-			</tr>
-                        <tr>
-				<td>Ho Ten :</td>
-				<td><input type="text" id="hoten" name="hoten"></td>
-			</tr>
-                        <tr>
-				<td>Ngay Sinh :</td>
-				<td><input type="text" id="ngsinh" name="ngsinh"></td>
-			</tr>
-			<tr>
-				<td>So Dien Thoai :</td>
-				<td><input type="text" id="sdt" name="sdt"></td>
-			</tr>
-			<tr>
-				<td>Email :</td>
-				<td><input type="text" id="email" name="email"></td>
-			</tr>
-                        <tr>
-				<td>Quyen :</td>
-				<td><input type="text" id="quyen" name="quyen"></td>
-			</tr>
-                        <tr>
-				<td>GioiTinh :</td>
-				<td><input type="text" id="gioitinh" name="gioitinh"></td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center"><input type="submit" name="btn_submit" value="Dang ky"></td>
-			</tr>
+		<div class="form-group">
+         
+			 
+            <form class="form-horizontal">
+                  <fieldset>
 
-		</table>
-                
+                  <legend>Mẫu Đăng Kí</legend>
+
+                  <div class="form-group">
+                    <label class="col-md-5 control-label" for="textinput">Tên Đăng Nhập: </label>  
+                    <div class="col-md-4">
+                    <input id="tendn" name="tendn" type="text" class="form-control input-md">
+                    </div>
+                  </div>
+
+                  <!-- Password input-->
+                  <div class="form-group">
+                    <label class="col-md-5 control-label" for="passwordinput">Mật Khẩu: </label>
+                    <div class="col-md-4">
+                      <input id="mk" name="mk" type="password" class="form-control input-md">
+                  
+                    </div>
+                  </div>
+
+                  <!-- Password input-->
+                  <div class="form-group">
+                    <label class="col-md-5 control-label" for="passwordinput">Nhập Lại Mật Khẩu: </label>
+                    <div class="col-md-4">
+                      <input id="mk" name="mk" type="password" class="form-control input-md">
+                  
+                    </div>
+                  </div>
+
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-md-5 control-label" for="textinput">Họ Tên: </label>  
+                    <div class="col-md-4">
+                    <input id="hoten" name="hoten" type="text" class="form-control input-md">
+                    
+                    </div>
+                  </div>
+
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-md-5 control-label" for="textinput">Ngày Sinh: </label>  
+                    <div class="col-md-4">
+                    <input id="ngsinh" name="ngsinh" type="text" class="form-control input-md">
+                     
+                    </div>
+                  </div>
+
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-md-5 control-label" for="textinput">Số Điện Thoại: </label>  
+                    <div class="col-md-4">
+                    <input id="sdt" name="sdt" type="text" class="form-control input-md">
+                     
+                    </div>
+                  </div>
+
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-md-5 control-label" for="textinput">Email: </label>  
+                    <div class="col-md-4">
+                    <input id="email" name="email" type="text"  class="form-control input-md">
+                    
+                    </div>
+                  </div>
+
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-md-5 control-label" for="textinput">Quyền: </label>  
+                    <div class="col-md-4">
+                    <input id="quyen" name="quyen" type="text"  class="form-control input-md">
+                  
+                    </div>
+                  </div>
+
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-md-5 control-label" for="textinput">Giới Tính: </label>  
+                    <div class="col-md-4">
+                    <input id="gioitinh" name="gioitinh" type="text" class="form-control input-md">
+                    
+                    </div>
+                  </div>
+
+                     <div class="form-group">
+                       <label class="col-md-4 control-label" for="button1id"></label>
+                       <div class="col-md-8">
+                         <button id="dangki" name="dangki" class="btn btn-success">Đăng Kí</button>
+                         <button id="" name="reset" class="btn btn-danger">Reset</button>
+                       </div>
+                     </div>
+
+                  </fieldset>
+                  </form>
 	</form>
 	
             <script language="javascript" type="text/javascript">
