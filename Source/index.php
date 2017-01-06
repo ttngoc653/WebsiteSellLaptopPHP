@@ -11,13 +11,16 @@
   <script src="JsCssCapcha/modernizr-2.8.3-respond-1.4.2.min.js"></script>
   <style type="text/css">
     body{
-      width: 1024px;
+      width: 683px;
       margin: 0 auto; 
     }
   </style>
 </head>
 <body background="./image/resized-116.jpg" style="background-attachment :fixed; background-repeat: repeat;">
-  <?php include_once "./_dauWeb.php"; ?>
+<?php 
+  session_start();
+  include_once "./_dauWeb.php";
+?>
   <br/>
   <div class="row">
     <div class="col-lg-10">
@@ -38,6 +41,12 @@
             break;
           case "chitiet":
             include_once "./_ChitietSP.php";
+            break;
+          case "dangxuat":
+            include_once "./_dangXuat.php";
+            break;
+          case "tim":
+            include_once "./_tim.php";
             break;
           default:
             echo "CHỨC NĂNG ĐANG TRONG QUÁ TRÌNH XÂY DỰNG. MONG MẤY CHẾ THÔNG CẢM.";

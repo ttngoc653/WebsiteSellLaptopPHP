@@ -1,182 +1,140 @@
 <?php require_once './hamKetNoiCSDL.php'; 
 
-$rr=ConnectQuery("select * from san_pham where masp=29");
+$rr=ConnectQuery("select * from san_pham where masp='".$_GET['masp']."'");
 	while($row=$rr->fetch_assoc()){
 		$view=$row['luotview']+1;
-		$rs=ConnectQuery("update san_pham set luotview=$view where masp=29");
+		$rs=ConnectQuery("update san_pham set luotview=$view where masp='".$_GET['masp']."'");
 	}
-$rr=ConnectQuery("select * from san_pham where masp=29");
+$rr=ConnectQuery("select * from san_pham where masp='".$_GET['masp']."'");
 	while($row=$rr->fetch_assoc()){
 ?>
-
-<div class="container">
-	                  
-	<H1>Thông tin sản phẩm:</H1>                     
-
- 		  <div class="col-md-4">
-          		<img src="https://cdn.tgdd.vn/Products/Images/44/76031/acer-es1-431-n3060-4gb-500gb-win10-400x400.png" width="100%" />     
-          </div>
-		  <div class="col-md-1"></div>
-		  
-          <div class="col-md-3">
-    	<form class="form-horizontal" action="index.html" method="POST">
+<div class="col-lg-12">
+<div style="text-align: center;">
+<div style="font-size: 16px;">
+	 <p><h1><b>THÔNG TIN SẢN PHẨM</b></h1></p>
+   <br>
+</div>
+  <div class="col-lg-5" style="text-align: center;">
+ 		<img src="./image/<?php echo $row['masp']."/".$row['icon']; ?>" width="300px" width="300px" />     
+  </div>
+  <div class="col-lg-7">
+   	<form class="form-horizontal" action="index.html" method="POST">
+      <div class="form-group">
+   			<h1 style="text-align: center;"><?php echo $row['hangsx']." ".$row['tensp']; ?></h1>
+      </div>
+			<div class="form-group">
+				<label control-label">Số lượng bán: <?php echo SoLuongBan($row['masp']); ?></label><br>
+		    <label for="SoLuongXem" control-label">Số lượng xem: <?php echo $row['luotview'];?></label>
+			</div>
+			  <?php 
+        if(isset($role)) 
+          echo '<div class="form-group">
+        <label for="SoLuongDat" control-label">Số lượng đặt:</label><input type="number" min="0" class="form-control" id="SoLuongDat">
+      </div>
         <div class="form-group">
-          			<label for="DGSP" class="control-label"><?php echo $row['hangsx']." ".$row['tensp']; ?></label>
-                    
-							<div class="form-group">
-							<label for="SoLuongBan" class="col-sm-6 control-label">Số lượng bán:</label>
-									
-							</div>
-							<div class="form-group">
-							<label for="SoLuongXem" class="col-sm-6 control-label">Số lượng xem: <?php echo $row['luotview'];?></label>
-									
-							</div>
-							<div class="form-group">
-							<label for="SoLuongDat" class="col-sm-6 control-label">Số lượng đặt:</label>
-									<input type="text" class="form-control" id="SoLuongDat">
-							</div>
-
-							
-						</div>
-                    <div class="form-group">
-							<button type="submit" class="btn btn-success">
-								<i class="fa fa-check"></i>Thêm vào giỏ hàng                              
-							</button>
-					
-					</div>
-                    
-                </div> 
-          </form>
-          </div>
-        
-	<h2>Hình ảnh sản phẩm</h2>	
-		
-		    <div class="col-sm-0"> </div>
-			<div class="col-sm-12 body">
-		<div class="col-sm-12 image-run" style="text-align:left">
-			<img style="width:250px;height:250px;" src="imgs/1.jpg" id="photo">
-		</div>
-			
-		<div class="col-sm-12">
-			<img style="width:100px;height:100px" onclick="img1()" class="img-change" id="1" src="imgs/1.jpg">
-			<img style="width:100px;height:100px" onclick="img2()" class="img-change" id="2" src="imgs/2.jpg">
-			<img style="width:100px;height:100px" onclick="img3()" class="img-change" id="3" src="imgs/3.jpg">
-			<img style="width:100px;height:100px" onclick="img4()" class="img-change" id="4" src="imgs/4.jpg">
-		</div>
-    </div>
-		<script>
-			var temp=1;
-
-			var flag=1;
-				function img1()
-				{
-					var x=document.getElementById("photo")
-					if(x)
-					{
-						x.src="imgs/1.jpg"
-					}
-				}
-				function img2()
-				{
-					var x=document.getElementById("photo") 
-					if(x)
-					{
-						x.src="imgs/2.jpg"
-					}
-				}
-				function img3()
-				{
-					var x=document.getElementById("photo") 
-					if(x)
-					{
-						x.src="imgs/3.jpg"
-					}
-				}
-				function img4()
-				{
-					var x=document.getElementById("photo") 
-					if(x)
-					{
-						x.src="imgs/4.jpg"
-					}
-				}
-				function img5()
-				{
-					var x=document.getElementById("photo") 
-					if(x)
-					{
-						x.src="imgs/5.jpg"
-					}
-				}
-				function img6()
-				{
-					var x=document.getElementById("photo") 
-					if(x)
-					{
-						x.src="imgs/6.jpg"
-					}
-				}
-				function run()
-				{
-					var x=document.getElementById("photo");
-					inter=setInterval(function()
-								{
-									x.src="imgs/"+temp+".jpg";
-									temp=temp+1;
-									if(temp>6)
-									{
-										temp=1;
-									}
-								},1000)
-				}
-				function runimg()
-				{
-					if(flag!==0)
-					{
-						flag=0;
-						var y=document.getElementById("play");
-						if(y)
-						{
-							y.src="imgs/Stop-Pressed-Blue-icon.png"
-						}
-						run();
-					}
-					else if(flag==0)
-					{
-						flag=1;
-						var y=document.getElementById("play");
-						if(y)
-						{
-							y.src="imgs/Play-Pressed-icon.png"
-						}
-						stop();
-					}
-				}
-				function stop()
-				{
-					clearInterval(inter);
-				}
-</script>
-      
-		
-		
-		
-		
-<div class="col-md-12">
-  <h2>Thông số sản phẩm</h2>
+      <button type="submit" class="btn btn-success">         
+            <i class="fa fa-check"></i>Thêm vào giỏ hàng
+      </button>  
+    </div>'; ?>
+    </form>     
+  </div>
+</div>
+<br/>
+<p>
+<div class="col-lg-12" style="margin-bottom: 20px">
+<div style="text-align: center;">
+<h2>Hình ảnh sản phẩm</h2>
+	<div class="col-sm-10 image-run">
+		<img style="width:680px;height:378px;margin-left: 60px;" src="./image/<?php echo $row['masp']."/".$row['icon']; ?>" id="photo">
+  </div>
+  
+  <div class="col-sm-12">
+  <?php 
+    $image=ConnectQuery("select * from hinh_anh_sp where masp='".$_GET['masp']."'");
+    $dem=0;
+    while ($rowimage=$image->fetch_assoc()) {
+      $dem=$dem+1;
+  ?>
+      <img style="width:85px;height:47px" onmousemove="img<?php echo $dem; ?>()" class="img-change" id="<?php echo $dem; ?>" src="./image/<?php echo $rowimage['masp']."/".$rowimage['tenfile']; ?>">
+    <script>
+    function img<?php echo $dem; ?>()
+    {
+      var x=document.getElementById("photo")
+      if(x)
+      {
+        x.src="./image/<?php echo $rowimage['masp']."/".$rowimage['tenfile']; ?>"
+      }
+    }
+    </script>
+  <?php } ?>
+	</div>
+</div>
+</div>
+</p>
+<p>
+<div class="col-lg-4">
+  <div class="panel panel-default" style="opacity: 0.9;">
+      <div class="panel-heading">
+        <h3 class="panel-title" style="font: arial;text-align: center;"><b>SẢN PHẨM CÙNG HÃNG</b></h3>
+      </div>
+      <div class="panel-body" >
+        <?php $top=ConnectQuery("select * from san_pham where hangsx='".$row['hangsx']."' limit 5");
+        while ($rowtop=$top->fetch_assoc()) {
+            ?><div style="border: outset; margin: 5px;float: left;width: 200px;text-align: center;">
+        <a href="index.php?act=chitiet&masp=<?php echo $rowtop['masp']; ?>">
+          <img width="120px" height="120px" src="./image/<?php echo $rowtop['masp']."/".$rowtop['icon']; ?>"/>
+          <div style="font: bold 14px arial;color: #f39;margin-top: 2px;"><?php echo $rowtop['hangsx']."<br/>".$rowtop['tensp']; ?></div>
+          <div style="font:bold 12px arial;color: #f30;">Giá: <?php echo number_format($rowtop["gia"]); ?> VNĐ</div>
+        </a>
+        <div style="font:italic bold 12px arial;margin-right: 30px; margin-bottom: 10px;color:blue; text-align: center;">
+          <?php if(isset($role)) echo "<input style=\"border-width: 0px;\" type=\"submit\" name=\"them\" value=\"Thêm vào giỏ\">"; ?>
+        </div>
+            </div>
+      <?php 
+        }
+        ?>
+      </div>
+  </div>
+  <div class="panel panel-default" style="opacity: 0.9;">
+      <div class="panel-heading">
+        <h3 class="panel-title" style="font: arial;text-align: center;"><b>SẢN PHẨM CÙNG HÃNG</b></h3>
+      </div>
+      <div class="panel-body" >
+        <?php $top=ConnectQuery("select * from san_pham where hangsx='".$row['hangsx']."' limit 5");
+        while ($rowtop=$top->fetch_assoc()) {
+            ?><div style="border: outset; margin: 5px;float: left;width: 200px;text-align: center;">
+        <a href="index.php?act=chitiet&masp=<?php echo $rowtop['masp']; ?>">
+          <img width="120px" height="120px" src="./image/<?php echo $rowtop['masp']."/".$rowtop['icon']; ?>"/>
+          <div style="font: bold 14px arial;color: #f39;margin-top: 2px;"><?php echo $rowtop['hangsx']."<br/>".$rowtop['tensp']; ?></div>
+          <div style="font:bold 12px arial;color: #f30;">Giá: <?php echo number_format($rowtop["gia"]); ?> VNĐ</div>
+        </a>
+        <div style="font:italic bold 12px arial;margin-right: 30px; margin-bottom: 10px;color:blue; text-align: center;">
+          <?php if(isset($role)) echo "<input style=\"border-width: 0px;\" type=\"submit\" name=\"them\" value=\"Thêm vào giỏ\">"; ?>
+        </div>
+            </div>
+      <?php 
+        }
+        ?>
+      </div>
+  </div>
+</div>
+<div style="opacity: 0.9;" class="col-lg-8">
+<div style="border-style: solid; background-color: yellow; text-align: center;border-top-right-radius: 8px; border-top-left-radius: 8px;">
+  <h3><b>THÔNG SỐ SẢN PHẨM</b></h3>
+</div>
+<div style="border-style: groove; color: yellow; background-color: green; text-align: center;border-bottom-right-radius: 8px; border-bottom-left-radius: 8px;">
            
   <table class="table">
    <thead>
-   		
+      
       <tr>
-        <th>Bộ xử lý</th>
-        <th></th>
+        <th colspan="2">Bộ xử lý</th>        
       </tr>
 
-	   <?php 
-	   //echo "select * from cpu where loai = '".$row['loaicpu']."'";
-	   $as=ConnectQuery("select * from cpu where loai = '".$row['loaicpu']."'");
-	   while($asrow=$as->fetch_assoc()) { ?>
+     <?php 
+     //echo "select * from cpu where loai = '".$row['loaicpu']."'";
+     $as=ConnectQuery("select * from cpu where loai = '".$row['loaicpu']."'");
+     while($asrow=$as->fetch_assoc()) { ?>
     </thead>
     <tbody>
       <tr>
@@ -207,14 +165,13 @@ $rr=ConnectQuery("select * from san_pham where masp=29");
     <?php } ?>
     <thead>
       <tr>
-        <th>Bộ nhớ</th>
-        <th></th>
+        <th colspan="2">Bộ nhớ</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>RAM</td>
-        <td><?php echo $row['ramdungluong'];?></td>
+        <td><?php echo $row['ramdungluong'];?> GB</td>
       </tr>
       <tr>
         <td>Loại RAM</td>
@@ -222,29 +179,27 @@ $rr=ConnectQuery("select * from san_pham where masp=29");
       </tr>
       <tr>
         <td>Tốc độ Bus</td>
-        <td><?php echo $row['rambus'];?></td>
+        <td><?php echo $row['rambus'];?> MHz</td>
       </tr>
     </tbody>
     <thead>
       <tr>
-        <th>Đĩa cứng</th>
-        <th></th>
+        <th colspan="2">Đĩa cứng</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>Loại ổ đĩa</td>
-        <td> odia...</td>
+        <td><?php $queryocung=ConnectQuery(select * from ) ?></td>
       </tr>
       <tr>
         <td>Ổ cứng</td>
         <td>...</td>
       </tr>
-
+</tbody>
        <thead>
       <tr>
-        <th>Màn hình</th>
-        <th></th>
+        <th colspan="2">Màn hình</th>
       </tr>
     </thead>
     <tbody>
@@ -269,8 +224,7 @@ $rr=ConnectQuery("select * from san_pham where masp=29");
 
  <thead>
       <tr>
-        <th>Đồ họa</th>
-        <th></th>
+        <th colspan="2">Đồ họa</th>
       </tr>
 
       <?php 
@@ -297,8 +251,7 @@ $rr=ConnectQuery("select * from san_pham where masp=29");
 
  <thead>
       <tr>
-        <th>Âm thanh</th>
-        <th></th>
+        <th colspan="2">Âm thanh</th>
       </tr>
     </thead>
     <tbody>
@@ -308,10 +261,9 @@ $rr=ConnectQuery("select * from san_pham where masp=29");
       </tr>
     </tbody>    
 
- 	<thead>
+  <thead>
       <tr>
-        <th>Đĩa quang</th>
-        <th></th>
+        <th colspan="2">Đĩa quang</th>
       </tr>
     </thead>
     <tbody>
@@ -328,8 +280,8 @@ $rr=ConnectQuery("select * from san_pham where masp=29");
 
  <thead>
       <tr>
-        <th>Tính năng mở rộng & Cổng giao tiếp</th>
-        <th></th>
+        <th colspan="2">Tính năng mở rộng & Cổng giao tiếp</th>
+        
       </tr>
     </thead>
     <tbody>
@@ -345,8 +297,7 @@ $rr=ConnectQuery("select * from san_pham where masp=29");
     
  <thead>
       <tr>
-        <th>Giao tiếp mạng</th>
-        <th></th>
+        <th colspan="2">Giao tiếp mạng</th>        
       </tr>
     </thead>
     <tbody>
@@ -364,10 +315,9 @@ $rr=ConnectQuery("select * from san_pham where masp=29");
       </tr>
     </tbody>
     
- 	<thead>
+  <thead>
       <tr>
-        <th>Card Reader</th>
-        <th></th>
+        <th colspan="2">Card Reader</th>
       </tr>
     </thead>
     <tbody>
@@ -383,8 +333,7 @@ $rr=ConnectQuery("select * from san_pham where masp=29");
     
  <thead>
       <tr>
-        <th>Webcam</th>
-        <th></th>
+        <th colspan="2">Webcam</th>
       </tr>
     </thead>
     <tbody>
@@ -392,16 +341,11 @@ $rr=ConnectQuery("select * from san_pham where masp=29");
         <td>Độ phân giải WC</td>
         <td>...</td>
       </tr>
-      <tr>
-        <td>Thông tin thêm</td>
-        <td>...</td>
-      </tr>
     </tbody>
     
  <thead>
       <tr>
-        <th>PIN/Battery</th>
-        <th></th>
+        <th colspan="2">PIN/Battery</th>
       </tr>
     </thead>
     <tbody>
@@ -414,8 +358,7 @@ $rr=ConnectQuery("select * from san_pham where masp=29");
     
  <thead>
       <tr>
-        <th>Hệ điều hành, phần mềm sẵn có/OS</th>
-        <th></th>
+        <th colspan="2">Hệ điều hành</th>
        </tr>
     </thead>
     <tbody>
@@ -423,23 +366,18 @@ $rr=ConnectQuery("select * from san_pham where masp=29");
         <td>Hệ điều hành</td>
         <td><?php echo $row['hdh']; ?></td>
       </tr>
-      <tr>
-        <td>Phần mềm có sẳn</td>
-        <td><?php echo $row['an']; ?></td>
-      </tr>
     </tbody>
     
     
  <thead>
       <tr>
-        <th>Kích thước & Trọng lượng</th>
-        <th></th>
+        <th colspan="2">Kích thước & Trọng lượng</th>        
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Kích thước</td>
-        <td><?php echo $row['dai']." x ".$row['rong']." x ".$row['day']; ?></td>
+        <td>Kích thước (ngang x dọc x dày)</td>
+        <td><?php echo $row['dai']." mm x ".$row['rong']." mm x ".$row['day']; ?> mm</td>
       </tr>
       <tr>
         <td>Trọng lượng (kg)</td>
@@ -449,7 +387,10 @@ $rr=ConnectQuery("select * from san_pham where masp=29");
         <td>Chất liệu</td>
         <td><?php echo $row['chatlieu']; ?></td>
       </tr>
-    </tbody>    
+    </tbody>
 </table>
 </div>
 	<?php } ?>
+</div>
+</p>
+</div>

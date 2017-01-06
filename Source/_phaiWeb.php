@@ -1,7 +1,7 @@
 <?php require_once './hamKetNoiCSDL.php'; ?>
 
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-success" onclick="">
+<div style=" opacity: 0.9;" class="list-group">
+  <a href="" class="list-group-item list-group-item-success" onclick="">
     <b>HÃNG</b>
   </a>
   <?php  
@@ -9,14 +9,14 @@
   	while ($row=$rs->fetch_assoc()) {
   		$a=$row["hangsx"];
   ?>
-  	<a href="index.php?hd=xemdssp&hang=<?php echo $a; ?>" class="list-group-item"><?php echo $a; ?></a>
+  	<a href="index.php?act=timkiem&hang=<?php echo $a; ?>" class="list-group-item"><div style="opacity: 1"><?php echo $a; ?></div></a>
   <?php
   	}
   ?>
 </div>
 
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-success" onclick="">
+<div style=" opacity: 0.9;" class="list-group">
+  <a href="" class="list-group-item list-group-item-success" onclick="">
     <b>CPU</b>
   </a>
   <?php  
@@ -24,12 +24,12 @@
   	while ($row=$rs->fetch_assoc()) {
   		$a=$row["congnghe"];
   ?>
-  	<a href="index.php?hd=xemdssp&cpu=<?php echo $a; ?>" class="list-group-item"><?php echo $a; ?></a>
+  	<a href="index.php?act=timkiem&cpu=<?php echo $a; ?>" class="list-group-item"><?php echo $a; ?></a>
   <?php
   	}
   ?>
 </div>
-<div class="list-group">
+<div style=" opacity: 0.9;" class="list-group">
   <a href="#" class="list-group-item list-group-item-success" onclick="">
     <b>LƯỢNG RAM</b>
   </a>
@@ -38,12 +38,12 @@
   	while ($row=$rs->fetch_assoc()) {
   		$a=$row["ramdungluong"];
   ?>
-  	<a href="index.php?hd=xemdssp&ram=<?php echo $a; ?>" class="list-group-item"><?php echo $a; ?> GB</a>
+  	<a href="index.php?act=timkiemkiem&ram=<?php echo $a; ?>" class="list-group-item"><?php echo $a; ?> GB</a>
   <?php
   	}
   ?>
 </div>
-<div class="list-group">
+<div style=" opacity: 0.9;" class="list-group">
   <a href="#" class="list-group-item list-group-item-success" onclick="">
     <b>HỆ ĐIỀU HÀNH</b>
   </a>
@@ -52,12 +52,12 @@
   	while ($row=$rs->fetch_assoc()) {
   		$a=$row["hdh"];
   ?>
-  	<a href="index.php?hd=xemdssp&hdh=<?php echo $a; ?>" class="list-group-item"><?php echo $a; ?></a>
+  	<a href="index.php?act=timkiemkiem&hdh=<?php echo $a; ?>" class="list-group-item"><?php echo $a; ?></a>
   <?php
   	}
   ?>
 </div>
-<div class="list-group">
+<div style=" opacity: 0.9;" class="list-group">
   <a href="#" class="list-group-item list-group-item-success" onclick="">
     <b>BỘ NHỚ MÁY</b>
   </a>
@@ -66,7 +66,7 @@
   	while ($row=$rs->fetch_assoc()) {
   		$a=$row["rom"];
   ?>
-  	<a href="index.php?hd=xemdssp&hdh=<?php echo $a; ?>" class="list-group-item"><?php echo $a; ?> GB</a>
+  	<a href="index.php?hd=timkiem&rom=<?php echo $a; ?>" class="list-group-item"><?php echo $a; ?> GB</a>
   <?php
   	}
   ?>
