@@ -79,7 +79,7 @@
 	if(isset($_SESSION['name'])){
 		$role=$_SESSION['quyen'];
 		echo "<div style=\"margin-left: 100px; text-align: right; margin-top: 5px;\">
-		  	<a href=\"index.php?act=giohang\" title=\"\"><img src=\"./image/shopping.png\" width=\"35px\" alt=\"\"/> <span class=\"badge\">4</span> sản phẩm</a> <a href=\"index.php?act=\" class=\"btn btn-info btn-md\" role=\"button\">Đăng xuất</a>&nbsp;
+		  	<a href=\"index.php?act=giohang\" title=\"\"><img src=\"./image/shopping.png\" width=\"35px\" alt=\"\"/> <span class=\"badge\">4</span> sản phẩm</a> <a href=\"index.php?act=dangxuat\" class=\"btn btn-info btn-md\" role=\"button\">Đăng xuất</a>&nbsp;
 		</div>";
 	}
 	else if(isset($_COOKIE['name'])){
@@ -152,11 +152,13 @@
 	$hien3="FAQ";
 	$hien4="LIÊN HỆ";
 	if(isset($role)){
-
+		echo "<a href=\"index.php\"><button style=\"width: 123px\">TRANG CHỦ</button></a><?php
+	 ?><a href=\"<?php echo $duongdan1; ?>\"><button style=\"width: 123px\">OVERVIEW</button></a><?php 
+	  ?><a href=\"<?php echo $duongdan2; ?>\"><button style=\"width: 109px;\">MODELS</button></a><?php 
+	   ?><a href=\"<?php echo $duongdan3; ?>\"><button style=\"width: 92px;\">FAQ</button></a><?php 
+	    ?><a href=\"<?php echo $duongdan4; ?>\"><button style=\"width: 143px;\">LIÊN HỆ</button></a><?php 
+	     ?><a><button style=\"width: ";
+	    echo 1024-123-123-109-92-143;
+	    echo "px\">&nbsp;</button></a></p>";
 	}
-	?><a href="index.php"><button style="width: 123px">TRANG CHỦ</button></a><?php
-	 ?><a href="<?php echo $duongdan1; ?>"><button style="width: 123px">OVERVIEW</button></a><?php 
-	  ?><a href="<?php echo $duongdan2; ?>"><button style="width: 109px;">MODELS</button></a><?php 
-	   ?><a href="<?php echo $duongdan3; ?>"><button style="width: 92px;">FAQ</button></a><?php 
-	    ?><a href="<?php echo $duongdan4; ?>"><button style="width: 143px;">LIÊN HỆ</button></a><?php 
-	     ?><a><button style="width: <?php echo 1024-123-123-109-92-143; ?>px">&nbsp;</button></a></p>
+	?>

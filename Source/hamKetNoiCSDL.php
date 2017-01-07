@@ -55,4 +55,63 @@
             return $row['sl'];
         }   
     }
+    function XuatLoaiOCung($idsp){
+        $loai="";
+        $cn =new mysqli(server,user,pw,db);
+        if($cn->connect_errno){
+            die("Lỗi kết nối với server.");
+        }
+        $cn->query("set names 'utf8'");
+        $truyvan =$cn->query("select * from o_dia_cung where masp='$idsp'");
+        if($truyvan->num_rows<2){
+            while ($row=$truyvan->fetch_assoc()) {
+                return $row['loaiocung'];
+            }
+        }
+        else{
+            $dem=0;
+            while ($row=$truyvan->fetch_assoc()) {
+                if(dem<1)
+                    $loai+= $row['loaiocung'];
+                else
+                    $loai=$loai." + ".$row['loaiocung'];
+            }
+        }
+        return $loai;
+    }
+    function XuatDungLuongTheoLoai($idsp){
+        $loai="";
+        $cn =new mysqli(server,user,pw,db);
+        if($cn->connect_errno){
+            die("Lỗi kết nối với server.");
+        }
+        $cn->query("set names 'utf8'");
+        $truyvan =$cn->query("select * from o_dia_cung where masp='$idsp'");
+        if($truyvan->num_rows<2){
+            while ($row=$truyvan->fetch_assoc()) {
+                return $row['dungluong'];
+            }
+        }
+        else{
+            $dem=0;
+            while ($row=$truyvan->fetch_assoc()) {
+                if(dem<1)
+                    $loai += $row['dungluong'];
+                else
+                    $loai=$loai." + ".$row['dungluong'];
+            }
+        }
+        return $loai;
+    }    
+    function XuatTenCardDoHoa($macard){
+        $cn =new mysqli(server,user,pw,db);
+        if($cn->connect_errno){
+            die("Lỗi kết nối với server.");
+        }
+        $cn->query("set names 'utf8'");
+        $truyvan =$cn->query("select * from cpu where loai='$macard'");
+        while ($row=$truyvan->fetch_assoc()) {
+            return $row['congnghe'];
+        }
+    }
 ?>

@@ -11,7 +11,7 @@
   <script src="JsCssCapcha/modernizr-2.8.3-respond-1.4.2.min.js"></script>
   <style type="text/css">
     body{
-      width: 683px;
+      width: 1024px;
       margin: 0 auto; 
     }
   </style>
@@ -24,7 +24,7 @@
   <br/>
   <div class="row">
     <div class="col-lg-10">
-      <?php
+    <?php
       if (isset($_GET["act"])) {
         switch ($_GET["act"]) {
           case "themcpu":
@@ -45,11 +45,13 @@
           case "dangxuat":
             include_once "./_dangXuat.php";
             break;
-          case "tim":
+          case "timkiem":
             include_once "./_tim.php";
             break;
           default:
-            echo "CHỨC NĂNG ĐANG TRONG QUÁ TRÌNH XÂY DỰNG. MONG MẤY CHẾ THÔNG CẢM.";
+            echo "<div style=\"margin-top: 256px; color:red; font-size: 20px;\"><b>
+              CHỨC NĂNG ĐANG TRONG QUÁ TRÌNH XÂY DỰNG. MONG MẤY CHẾ THÔNG CẢM.
+            </b></div>";
             break;
         }
       } else {
