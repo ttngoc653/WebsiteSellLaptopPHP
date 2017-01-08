@@ -18,6 +18,7 @@
 </head>
 <body background="./image/resized-116.jpg" style="background-attachment :fixed; background-repeat: repeat;">
 <?php 
+  ob_start();
   session_start();
   include_once "./_dauWeb.php";
   include_once "./hamLienQuan.php";
@@ -51,6 +52,9 @@
             break;
           case "giohang":
             include_once "./_quanlyGioHang.php";
+            break;
+          case "themsp":
+            include_once "./_themSP.php";
             break;
           default:
             echo "<div style=\"margin-top: 256px; color:red; font-size: 20px;\"><b>

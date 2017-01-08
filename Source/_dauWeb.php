@@ -1,5 +1,5 @@
 <?php 	
-	error_reporting(2); //tắt lỗi không quan trọng
+	//error_reporting(2); //tắt lỗi không quan trọng
 	require_once ('./hamKetNoiCSDL.php');
 	require_once ('./hamLienQuan.php');
 	if(isset($_GET['gio']) && !empty($_GET['gio'])){

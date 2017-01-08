@@ -27,9 +27,9 @@ $rr=ConnectQuery("select * from san_pham where masp='".$_GET['masp']."'");
         <label control-label">Số lượng bán: <?php echo SoLuongBan($row['masp']); ?></label><br>
 		    <label for="SoLuongXem" control-label">Số lượng xem: <?php echo $row['luotview'];?></label>
 			  <?php 
-        if(isset($role)) 
+        if(isset($role)||laySoLuongHienTai($row['masp'])==0)
           echo '<div class="form-group">
-        <label for="SoLuongDat" control-label">Số lượng đặt:</label><input type="number" min="0" class="form-control" id="SoLuongDat">
+        <label for="SoLuongDat" control-label">Số lượng đặt:</label><input type="number" min="0" max="<?php echo laySoLuongHienTai($row['masp']); ?>" class="form-control" id="SoLuongDat">
       </div>
         <div class="form-group">
       <button type="submit" class="btn btn-success">         

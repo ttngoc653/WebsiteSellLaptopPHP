@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default" style="opacity: 0.9">
 	<div class="panel-heading">
     	<h3 class="panel-title" style="font: arial;">SẢN PHẨM TÌM KIẾM ĐƯỢC</h3>
   	</div>
@@ -60,7 +60,7 @@
 					<div style="font:bold 12px arial;color: #f30;">Giá: <?php echo number_format($row["gia"]); ?> VNĐ</div>
 				</a>
 				<?php 
-					if(isset($role)) echo "<a href=\"".$_SERVER["REQUEST_URI"]."&gio=".$row['masp']."\"><button style=\"height: 20px; background-color: #E6E6E6;color: blue;border-radius: 5px;\">Thêm vào giỏ</button></a>"; 
+					if(isset($role)||laySoLuongHienTai($row['masp'])==0) echo "<a href=\"".$_SERVER["REQUEST_URI"]."&gio=".$row['masp']."\"><button style=\"height: 20px; background-color: #E6E6E6;color: blue;border-radius: 5px;\">Thêm vào giỏ</button></a>"; 
 				?>
                 </div>
 			<?php 
