@@ -71,10 +71,11 @@
         else{
             $dem=0;
             while ($row=$truyvan->fetch_assoc()) {
-                if(dem<1)
-                    $loai+= $row['loaiocung'];
+                if($dem==0)
+                    $loai= $row['loaiocung'];
                 else
                     $loai=$loai." + ".$row['loaiocung'];
+                $dem+=1;
             }
         }
         return $loai;
@@ -95,10 +96,11 @@
         else{
             $dem=0;
             while ($row=$truyvan->fetch_assoc()) {
-                if(dem<1)
-                    $loai += $row['dungluong'];
+                if($dem==0)
+                    $loai = $row['dungluong'];
                 else
                     $loai=$loai." + ".$row['dungluong'];
+                $dem+=1;
             }
         }
         return $loai;

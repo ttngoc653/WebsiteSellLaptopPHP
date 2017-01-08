@@ -38,7 +38,7 @@
   	while ($row=$rs->fetch_assoc()) {
   		$a=$row["ramdungluong"];
   ?>
-  	<a href="index.php?act=timkiemkiem&ram=<?php echo $a; ?>" class="list-group-item"><?php echo $a; ?> GB</a>
+  	<a href="index.php?act=timkiem&ram=<?php echo $a; ?>" class="list-group-item"><?php echo $a; ?> GB</a>
   <?php
   	}
   ?>
@@ -52,7 +52,7 @@
   	while ($row=$rs->fetch_assoc()) {
   		$a=$row["hdh"];
   ?>
-  	<a href="index.php?act=timkiemkiem&hdh=<?php echo $a; ?>" class="list-group-item"><?php echo $a; ?></a>
+  	<a href="index.php?act=timkiem&hdh=<?php echo $a; ?>" class="list-group-item"><?php echo $a; ?></a>
   <?php
   	}
   ?>
@@ -66,7 +66,7 @@
   	while ($row=$rs->fetch_assoc()) {
   		$a=$row["rom"];
   ?>
-  	<a href="index.php?hd=timkiem&rom=<?php echo $a; ?>" class="list-group-item"><?php echo $a; ?> GB</a>
+  	<a href="index.php?act=timkiem&rom=<?php echo $a; ?>" class="list-group-item"><?php echo $a; ?> GB</a>
   <?php
   	}
   ?>

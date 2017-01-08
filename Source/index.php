@@ -20,6 +20,7 @@
 <?php 
   session_start();
   include_once "./_dauWeb.php";
+  include_once "./hamLienQuan.php";
 ?>
   <br/>
   <div class="row">
@@ -47,6 +48,9 @@
             break;
           case "timkiem":
             include_once "./_tim.php";
+            break;
+          case "giohang":
+            include_once "./_quanlyGioHang.php";
             break;
           default:
             echo "<div style=\"margin-top: 256px; color:red; font-size: 20px;\"><b>

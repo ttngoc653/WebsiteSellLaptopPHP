@@ -73,45 +73,45 @@ $rr=ConnectQuery("select * from san_pham where masp='".$_GET['masp']."'");
 </p>
 <p>
 <div class="col-lg-4">
-  <div class="panel panel-default" style="opacity: 0.9;">
+  <div class="panel panel-default" style="opacity: 0.9;border-radius: 5px;">
       <div class="panel-heading">
         <h3 class="panel-title" style="font: arial;text-align: center;"><b>SẢN PHẨM CÙNG HÃNG</b></h3>
       </div>
       <div class="panel-body" >
         <?php $top=ConnectQuery("select * from san_pham where hangsx='".$row['hangsx']."' limit 5");
         while ($rowtop=$top->fetch_assoc()) {
-            ?><div style="border: outset; margin: 5px;float: left;width: 200px;text-align: center;">
+            ?><div style="border: outset; margin: 5px;float: left;width: 200px;text-align: center;border-radius: 10px">
         <a href="index.php?act=chitiet&masp=<?php echo $rowtop['masp']; ?>">
           <img width="120px" height="120px" src="./image/<?php echo $rowtop['masp']."/".$rowtop['icon']; ?>"/>
           <div style="font: bold 14px arial;color: #f39;margin-top: 2px;"><?php echo $rowtop['hangsx']."<br/>".$rowtop['tensp']; ?></div>
           <div style="font:bold 12px arial;color: #f30;">Giá: <?php echo number_format($rowtop["gia"]); ?> VNĐ</div>
         </a>
-        <div style="font:italic bold 12px arial;margin-right: 30px; margin-bottom: 10px;color:blue; text-align: center;">
-          <?php if(isset($role)) echo "<input style=\"border-width: 0px;\" type=\"submit\" name=\"them\" value=\"Thêm vào giỏ\">"; ?>
-        </div>
+        <?php 
+          if(isset($role)) echo "<a href=\"".$_SERVER["REQUEST_URI"]."&gio=".$row['masp']."\"><button style=\"height: 20px; background-color: #E6E6E6;color: blue;border-radius: 5px;\">Thêm vào giỏ</button></a>"; 
+        ?>
             </div>
       <?php 
         }
         ?>
       </div>
   </div>
-  <div class="panel panel-default" style="opacity: 0.9;">
+  <div class="panel panel-default" style="opacity: 0.9;border-radius: 5px;">
       <div class="panel-heading">
-        <h3 class="panel-title" style="font: arial;text-align: center;"><b>SẢN PHẨM CÙNG HÃNG</b></h3>
+        <h3 class="panel-title" style="font: arial;text-align: center;"><b>SẢN PHẨM CÙNG LOẠI</b></h3>
       </div>
       <div class="panel-body" >
-        <?php $top=ConnectQuery("select * from san_pham where hangsx='".$row['hangsx']."' limit 5");
+        <?php $top=ConnectQuery("select * from san_pham where ramdungluong='".$row['ramdungluong']."' order by masp desc limit 5");
         while ($rowtop=$top->fetch_assoc()) {
-            ?><div style="border: outset; margin: 5px;float: left;width: 200px;text-align: center;">
+            ?><div style="border: outset; margin: 5px;float: left;width: 200px;text-align: center;border-radius: 10px">
         <a href="index.php?act=chitiet&masp=<?php echo $rowtop['masp']; ?>">
           <img width="120px" height="120px" src="./image/<?php echo $rowtop['masp']."/".$rowtop['icon']; ?>"/>
           <div style="font: bold 14px arial;color: #f39;margin-top: 2px;"><?php echo $rowtop['hangsx']."<br/>".$rowtop['tensp']; ?></div>
           <div style="font:bold 12px arial;color: #f30;">Giá: <?php echo number_format($rowtop["gia"]); ?> VNĐ</div>
         </a>
-        <div style="font:italic bold 12px arial;margin-right: 30px; margin-bottom: 10px;color:blue; text-align: center;">
-          <?php if(isset($role)) echo "<input style=\"border-width: 0px;\" type=\"submit\" name=\"them\" value=\"Thêm vào giỏ\">"; ?>
+        <?php 
+          if(isset($role)) echo "<a href=\"".$_SERVER["REQUEST_URI"]."&gio=".$row['masp']."\"><button style=\"height: 20px; background-color: #E6E6E6;color: blue;border-radius: 5px;\">Thêm vào giỏ</button></a>"; 
+        ?>    
         </div>
-            </div>
       <?php 
         }
         ?>
