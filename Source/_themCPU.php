@@ -1,6 +1,6 @@
 <?php require_once ('hamKetNoiCSDL.php'); ?>
 <div>
-	<h1 class="tieude">THÊM CPU</h1>
+	<h1 class="tieude" style="background-color: #f6f;height: 50px;opacity: 0.9;border-radius: 10px">THÊM CPU</h1>
 	<p id="thongbaoloi" class="thongbaoloi">
 		
 	</p>
@@ -28,9 +28,9 @@
 </div></i>
 <form class="form-horizontal" name="frmCPUthem" method="post" onsubmit="return ktra()">
 <fieldset>
-
+<div class="panel panel-default" style="opacity: 0.9;border-radius: 10px;">
 <!-- Form Name -->
-<legend><h2>THÊM LOẠI CPU</h2></legend>
+<legend style="background-color: gray;border-radius: 10px"><h2>THÊM LOẠI CPU</h2></legend>
 
 <!-- Select Basic -->
 <div class="form-group">
@@ -92,11 +92,16 @@
 <div style="text-align: center;" id="subCPUthem" >
 	<input type="submit" name="subCPUthem" class="btn btn-success" value="thêm loại CPU">
 </div>
+</div>
 </fieldset>
 </form>
+
 	<br><br>
+
 <form class="form-horizontal" action="" name="frmCPUxoa" method="post" accept-charset="utf-8" onsubmit="return ktraXoa()">
 <fieldset>
+
+<div class="panel panel-default" style="opacity: 0.9;border-radius: 10px;">
 <legend><h2>XÓA LOẠI CPU</h2></legend>
 <div class="form-group">
   <label class="col-md-4 control-label" for="loaixoa">Chọn loại CPU cần xóa</label>
@@ -111,6 +116,7 @@
 </div>
 <div style="text-align: center;" id="subCPUxoa" >
 	<input type="submit" name="subCPUxoa" class="btn btn-danger" value="xóa CPU">
+</div>
 </div>
 </fieldset>	
 </form>

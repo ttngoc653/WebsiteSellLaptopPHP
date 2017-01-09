@@ -1,13 +1,19 @@
 <?php 	
 	//error_reporting(2); //tắt lỗi không quan trọng
 	require_once ('./hamKetNoiCSDL.php');
+	require_once ('./hamLienQuan.php');
+	if(isset($_GET['gio']) && !empty($_GET['gio'])){
+		$id=$_GET['gio'];
+		setCart($id,1);
+	echo "<meta http-equiv=\"refresh\" content=\"0;".$_SERVER['HTTP_REFERER']."\">";
+	}
 ?>
 <p class="heading"><img src="image/Back.jpg" width="1024px" height="56px"><!--
 	--><div style="margin-top: -59px;margin-left: 40px; text-align: right; margin-right: 0px;position: absolute; color: white;font-weight: bold;font-size: 40px;">
 		<a class="" href="index.php"><img src="./image/home.png" width="45px" alt=""/></a>
 	</div>
 	<div  style="margin-top: -42px;margin-left: 182px; margin-right: 500px; text-align: right; margin-right: 0px;position: absolute; color: white;font-weight: bold;font-size: 12px;">
-		<form action="" method="port" accept-charset="utf-8">
+		<form action="" method="get" accept-charset="utf-8">
 		<input type="hidden" name="act" value="timkiem">
 		<div class="input-group input-group-sm col-xs-3">
      		<div class="input-group-btn">
@@ -28,14 +34,14 @@
           			<li><a><b>Giá cả:</b>&nbsp; &nbsp; 
           				<input type="number" name="tu" value="500000" max="100000000" min="1000000" step="500000" placeholder="giá từ"> VNĐ - <input type="number" name="den" value="100000000" max="100000000" min="1000000" step="500000"  placeholder="giá đến"> VNĐ
           			</a></li>
-          			<li><a><b>Ổ DVD:</b>&nbsp; &nbsp; 
-          				<label class="radio-inline"><input name="dvd" checked="checked" value="" type="radio">Tất cả</label> 
+          			<li><a><b>Thiết kế card đồ họa:</b>&nbsp; &nbsp; 
+          				<label class="radio-inline"><input name="dohoa" checked="checked" value="" type="radio">Tất cả</label> 
 						<?php  
-  							$rs= ConnectQuery("select distinct oquang from san_pham");
+  							$rs= ConnectQuery("select distinct thietke from cart_man_hinh");
   							while ($row=$rs->fetch_assoc()) {
-  								$a=$row["oquang"];
+  								$a=$row["thietke"];
   						?>
-    					<label class="radio-inline"><input name="dvd" value="<?php echo $a; ?>" type="radio"><?php echo $a; ?></label> 
+    					<label class="radio-inline"><input name="dohoa" value="<?php echo $a; ?>" type="radio"><?php echo $a; ?></label> 
     					<?php
   							}
   						?>
@@ -52,21 +58,25 @@
 						}
 					?>
           			</a></li>
-          			<li><a><b>Hệ điều hành:</b>&nbsp; &nbsp; 
-						<label class="radio-inline"><input name="hdh" checked="checked" value="" type="radio">Tất cả</label> 
+          				<li><a><b>CPU:</b>&nbsp; &nbsp; 
+						<label class="radio-inline"><input name="cpu" checked="checked" value="" type="radio">Tất cả</label> 
 					<?php  
-					  	$rs= ConnectQuery("select DISTINCT san_pham.hdh FROM san_pham");
+						$i=1;
+					  	$rs= ConnectQuery("select DISTINCT cpu.congnghe FROM cpu");
 					  	while ($row=$rs->fetch_assoc()) {
-					  		$a=$row["hdh"];
+					  		if($i%5==0 && $i!=0)
+					  			echo "</a></li><a><li>";
+					  		$a=$row["congnghe"];
 					?>
-					  	<label class="radio-inline"><input name="hdh" value="<?php echo $a; ?>" type="radio"><?php echo $a; ?></label> 
+					  	<label class="radio-inline"><input name="cpu" value="<?php echo $a; ?>" type="radio"><?php echo $a; ?></label> 
 					<?php
+								$i+=1;
 						}
 					?>
           			</a></li>
-        		</ul>
+        	</ul>
       		</div>
-      		<input type="text" name="kaka" class="form-control" placeholder="Hãy nhập thông tin muốn tìm" size="20">
+      		<input type="text" name="key" class="form-control" placeholder="Hãy nhập thông tin muốn tìm" size="20">
      		<div class="input-group-btn">
         		<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
       		</div>
@@ -79,13 +89,13 @@
 	if(isset($_SESSION['name'])){
 		$role=$_SESSION['quyen'];
 		echo "<div style=\"margin-left: 100px; text-align: right; margin-top: 5px;\">
-		  	<a href=\"index.php?act=giohang\" title=\"\"><img src=\"./image/shopping.png\" width=\"35px\" alt=\"\"/> <span class=\"badge\">4</span> sản phẩm</a> <a href=\"index.php?act=dangxuat\" class=\"btn btn-info btn-md\" role=\"button\">Đăng xuất</a>&nbsp;
+		  	<a href=\"index.php?act=giohang\" title=\"\"><img src=\"./image/shopping.png\" width=\"35px\" alt=\"\"/> <span class=\"badge\">"; ?><?php echo cart_sum_items(); ?><?php echo "</span> sản phẩm</a> <a href=\"index.php?act=dangxuat\" class=\"btn btn-info btn-md\" role=\"button\">Đăng xuất</a>&nbsp;
 		</div>";
 	}
 	else if(isset($_COOKIE['name'])){
 		$role= $_COOKIE['quyen'];
 		echo "<div style=\"margin-left: 100px; text-align: right; margin-top: 5px;\">
-		  	<a href=\"index.php?act=giohang\" title=\"\"><img src=\"./image/shopping.png\" width=\"35px\" alt=\"\"/> <span class=\"badge\">4</span> sản phẩm</a> <a href=\"index.php?act=dangxuat\" class=\"btn btn-info btn-md\" role=\"button\">Đăng xuất</a>&nbsp;
+		  	<a href=\"index.php?act=giohang\" title=\"\"><img src=\"./image/shopping.png\" width=\"35px\" alt=\"\"/> <span class=\"badge\">"; ?><?php echo cart_sum_items(); ?><?php echo "</span> sản phẩm</a> <a href=\"index.php?act=dangxuat\" class=\"btn btn-info btn-md\" role=\"button\">Đăng xuất</a>&nbsp;
 		</div>";
 	}
 	else if(isset($_POST['dangnhap'])){
@@ -98,11 +108,13 @@
 				$role=$row['quyen'];
 			}
 			echo "<div style=\"margin-left: 100px; text-align: right; margin-top: 5px;\">
-			  	<a href=\"\" title=\"\"><img src=\"./image/shopping.png\" width=\"35px\" alt=\"\"/> <span class=\"badge\">4</span> sản phẩm</a> <a href=\"index.php?act=dangxuat\" class=\"btn btn-info btn-md\" role=\"button\">Đăng xuất</a>&nbsp;
+			  	<a href=\"index.php?act=giohang\" title=\"\"><img src=\"./image/shopping.png\" width=\"35px\" alt=\"\"/> <span class=\"badge\"></span> sản phẩm</a> <a href=\"index.php?act=dangxuat\" class=\"btn btn-info btn-md\" role=\"button\">Đăng xuất</a>&nbsp;
 			  </div>";
 			if((isset($_POST['luu'])&&($_POST['luu']=="ok"))){
-				setcookie('name',$_POST['us'],time()+3600*3);
-				setcookie('quyen',$role,time()+3600*3);
+				setcookie('name',$_POST['us'],time()+3600*3,"/");
+				setcookie('quyen',$role,time()+3600*3,"/");
+				$_SESSION['name']=$user;
+				$_SESSION['quyen']=$role;
 			}
 			else{
 				$_SESSION['name']=$user;
@@ -111,7 +123,7 @@
 		}
 		else {
 			echo "<script>";
-			echo "alert(\"BẠN ĐÃ NHẬP SAI TÊN ĐĂNG NHẬP HOẶC MẬT KHẨU! $nd->num_rows\");";
+			echo "alert(\"BẠN ĐÃ NHẬP SAI TÊN ĐĂNG NHẬP HOẶC MẬT KHẨU!\");";
 			echo "</script>";
 			$user="";
 			if(isset($_POST['us'])){
@@ -143,22 +155,15 @@
 
 	</div>
 	<?php 
-	$duongdan1="";
-	$duongdan2="";
-	$duongdan3="";
-	$duongdan4="";
-	$hien1="OVERVIEW";
-	$hien2="MODELS";
-	$hien3="FAQ";
-	$hien4="LIÊN HỆ";
 	if(isset($role)){
 		echo "<a href=\"index.php\"><button style=\"width: 123px\">TRANG CHỦ</button></a><?php
-	 ?><a href=\"<?php echo $duongdan1; ?>\"><button style=\"width: 123px\">OVERVIEW</button></a><?php 
-	  ?><a href=\"<?php echo $duongdan2; ?>\"><button style=\"width: 109px;\">MODELS</button></a><?php 
-	   ?><a href=\"<?php echo $duongdan3; ?>\"><button style=\"width: 92px;\">FAQ</button></a><?php 
-	    ?><a href=\"<?php echo $duongdan4; ?>\"><button style=\"width: 143px;\">LIÊN HỆ</button></a><?php 
+	 ?><a href=\"\"><button style=\"width: 123px\">OVERVIEW</button></a><?php 
+	  ?><a href=\"\"><button style=\"width: 109px;\">MODELS</button></a><?php 
+	   ?><a href=\"\"><button style=\"width: 92px;\">FAQ</button></a><?php 
+	    ?><a href=\"\"><button style=\"width: 143px;\">LIÊN HỆ</button></a><?php 
 	     ?><a><button style=\"width: ";
 	    echo 1024-123-123-109-92-143;
 	    echo "px\">&nbsp;</button></a></p>";
 	}
+	ob_end_flush(); 
 	?>

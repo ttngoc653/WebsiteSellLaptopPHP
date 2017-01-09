@@ -71,10 +71,11 @@
         else{
             $dem=0;
             while ($row=$truyvan->fetch_assoc()) {
-                if(dem<1)
-                    $loai+= $row['loaiocung'];
+                if($dem==0)
+                    $loai= $row['loaiocung'];
                 else
                     $loai=$loai." + ".$row['loaiocung'];
+                $dem+=1;
             }
         }
         return $loai;
@@ -95,10 +96,11 @@
         else{
             $dem=0;
             while ($row=$truyvan->fetch_assoc()) {
-                if(dem<1)
-                    $loai += $row['dungluong'];
+                if($dem==0)
+                    $loai = $row['dungluong'];
                 else
                     $loai=$loai." + ".$row['dungluong'];
+                $dem+=1;
             }
         }
         return $loai;
@@ -113,5 +115,31 @@
         while ($row=$truyvan->fetch_assoc()) {
             return $row['congnghe'];
         }
+    }
+    function mahdGanNhatCuaNguoiDung($ten){
+        $cn =new mysqli(server,user,pw,db);
+        if($cn->connect_errno){
+            die("Lỗi kết nối với server.");
+        }
+        $cn->query("set names 'utf8'");
+        $truyvan =$cn->query("select madh from don_hang where taikhoan like '".$ten."' order by ngaylap desc limit 1");
+        while ($row=$truyvan->fetch_assoc()) {
+            return $row['madh'];
+        }
+    }
+    function laySoLuongHienTai($masp){
+        $cn =new mysqli(server,user,pw,db);
+        if($cn->connect_errno){
+            die("Lỗi kết nối với server.");
+        }
+        $cn->query("set names 'utf8'");
+        $truyvan =$cn->query("select slkho from san_pham where masp like '".$masp."'");
+        while ($row=$truyvan->fetch_assoc()) {
+            return $row['slkho'];
+        }   
+    }
+    function capnhatLaiSoLuong($id,$sl){
+      $conlai=laySoLuongHienTai($id)-$sl;
+      ConnectQuery("update san_pham SET slkho='".$conlai."' WHERE masp like '".$id."'");
     }
 ?>
