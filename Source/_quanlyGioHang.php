@@ -58,7 +58,7 @@
 ?>
 </div>
   <?php 
-    if(!isset($_SESSION['cart'])){
+    if(!isset($_SESSION['cart']) || count($_SESSION['cart'])==0){
       echo "<p>GIỎ HÀNG ĐANG TRỐNG. HÃY THÊM SẢN PHẨM VÀO GIỎ</p>";
     }
     else{

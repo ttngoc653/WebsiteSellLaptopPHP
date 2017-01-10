@@ -155,15 +155,12 @@
 
 	</div>
 	<?php 
-	if(isset($role)){
-		echo "<a href=\"index.php\"><button style=\"width: 123px\">TRANG CHỦ</button></a><?php
-	 ?><a href=\"\"><button style=\"width: 123px\">OVERVIEW</button></a><?php 
-	  ?><a href=\"\"><button style=\"width: 109px;\">MODELS</button></a><?php 
-	   ?><a href=\"\"><button style=\"width: 92px;\">FAQ</button></a><?php 
-	    ?><a href=\"\"><button style=\"width: 143px;\">LIÊN HỆ</button></a><?php 
-	     ?><a><button style=\"width: ";
-	    echo 1024-123-123-109-92-143;
-	    echo "px\">&nbsp;</button></a></p>";
+	if(isset($role)&&$role="1"){
+		include_once "./_menuQuanTri.php";
 	}
+	else{
+		include_once "./_menuNgDung.php";
+	}
+	echo "</p>";
 	ob_end_flush(); 
 	?>

@@ -1,9 +1,13 @@
-
+<?php 
+require_once ('hamKetNoiCSDL.php'); 
+if (isset($role)) {
+  echo "<script type=\"text/javascript\" charset=\"utf-8\" async defer>window.history.back(); </script>";
+}
+?>
 <form  class="form-horizontal" action="" name="themNgDung" method="post" enctype="multipart/form-data" onsubmit="return check_submit_nguoi_dung()">
   <fieldset>
-  <div class="panel panel-default" style="opacity: 0.9;border-radius: 10px">
-      
-    <legend style="background-color: #339999;color:yellow; border-radius: 10px;text-align: center;"><div class="panel-heading">ĐĂNG KÍ NGƯỜI DÙNG</div></legend>
+  <div class="panel panel-default" style="opacity: 0.9;border-radius: 10px;">
+    <legend class="panel-heading" style="color:blue; border-radius: 10px;text-align: center;">ĐĂNG KÍ NGƯỜI DÙNG</legend>
     <div style="text-align: center;">
       <?php
         require_once("hamKetNoiCSDL.php");
@@ -16,7 +20,8 @@
           $ngsinh = $_POST["ngsinh"];
           $sdt = $_POST["sdt"];
           $email = $_POST["email"];
-          $gioitinh = $_POST["gioitinh"];
+          $gioitinh = $_POST['gioitinh'];
+          //echo "<p>".$_POST['gioitinh']."</p>";
           //Kiểm tra điều kiện bắt buộc đối với các field không được bỏ trống
           if ($tendn == "" || $mk == "" || $hoten == "" || $ngsinh == ""|| $sdt == "" || $email == "" || $gioitinh ="") {
             echo "Vui lòng nhập đầy đủ thông tin";
@@ -27,8 +32,8 @@
             }
             else{
               //thực hiện việc lưu trữ dữ liệu vào db
-              $sql = "insert INTO nguoi_dung(tendn,mk,hoten,ngsinh,sdt,email,quyen,gioitinh) VALUES ('".$tendn."','".md5($mk)."','".$hoten."','".$ngsinh."','".$sdt."','".$email."','0','".$gioitinh."','";
-              //echo "<p>$sql</p>";
+              //$sql = "insert INTO nguoi_dung(tendn,mk,hoten,ngsinh,sdt,email,quyen,gioitinh) VALUES ('".$tendn."','".md5($mk)."','".$hoten."','".$ngsinh."','".$sdt."','".$email."','0','".$_POST['gioitinh']."')";
+              echo "<p>$sql</p>";
               // thực thi câu $sql với biến conn lấy từ file hamKetNoiCSDL.php
               $rs=ConnectQuery($sql);
               echo "chúc mừng ".$hoten." đã đăng ký thành công";
@@ -122,6 +127,7 @@
       </div></div>
       </div>
     </div>
+  </div>
   </fieldset>
 </form>
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
@@ -193,7 +199,7 @@ function check_submit_nguoi_dung(){
     return false;
   }
   else	
-    alert(frm.gioitinh.value);
+    //alert(frm.gioitinh.value);
     return true;	
 }
 </script>

@@ -1,4 +1,9 @@
-<?php require_once ('hamKetNoiCSDL.php'); ?>
+<?php 
+require_once ('hamKetNoiCSDL.php'); 
+if (!isset($role)||$role!=1) {
+	echo "<script type=\"text/javascript\" charset=\"utf-8\" async defer>window.history.back(); </script>";
+}
+?>
 <div>
 	<h1 class="tieude" style="background-color: #f6f;height: 50px;opacity: 0.9;border-radius: 10px">THÊM CPU</h1>
 	<p id="thongbaoloi" class="thongbaoloi">

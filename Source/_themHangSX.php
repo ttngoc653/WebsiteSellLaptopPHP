@@ -1,4 +1,9 @@
-<?php require_once ('hamKetNoiCSDL.php'); ?>
+<?php
+if (!isset($role)||$role!=1) {
+	echo "<script type=\"text/javascript\" charset=\"utf-8\" async defer>window.history.back(); </script>";
+}
+	require_once ('hamKetNoiCSDL.php'); 
+?>
 <div>
 	<h1 class="tieude">THÊM HÃNG SẢN XUẤT</h1>
 	<p id="thongbaoloi" class="thongbaoloi">
