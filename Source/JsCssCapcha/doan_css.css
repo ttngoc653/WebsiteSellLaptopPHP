@@ -1,23 +1,64 @@
 p.heading{
 	background-color: #4d7080;
+	/*background-color: rgba(255, 165, 0, 0.3)*/
 	margin: 0 auto;
-	align-items: center;
-	opacity: 0.9;
+	adtgn-items: center;
+	opacity: 0.9;*/
 }
 button{
 	border:none;
 	height: 41px;
 	font-size: 14px;
+	font-weight: normal;
 	color: white;
 	background-color: #4d7080;
-	display: inline-block;
+	/*background-color: rgba(255, 165, 0, 0.3)*/
+	display: indtne-block;
 }
 	button:hover{
-		background-color: green;
+		background-color: black;
+		height: 50px;
+		/*background-color: rgba(255, 165, 0, 0.8)*/
 		font-size: 14px;
 		font-weight: bold;
 		text-decoration: underline;
 	}
+
+.main_menu{ 
+	margin-top: -20px;
+	margin-bottom: 60px;
+}
+.main_menu>dl>dt{ 
+	float: left; 
+	position: relative;
+	font-stretch: normal;
+}
+.main_menu>dl>dt>dl{ 
+	text-align: center;
+	display: none; 
+	position: absolute; 
+	background: blue;
+	width: 200px;
+	background-color: #4d7080;
+	z-index: 1;
+}
+.main_menu>dl>dt:hover dl{ 
+	display: block;
+	z-index: 1;
+}
+.main_menu dl dt:hover{
+	font-weight: bold;
+	background: black; 
+	transition: all 0.5s;
+}
+.main_menu>dl>dt>dl>dt{
+	padding: 5px 10px;
+	font-weight: normal;
+}
+.main_menu>dl>dt>dl>dt>a{ 
+	color: white;
+}
+
 div .showchanWeb{
  	min-height: 128px;
  	background: yellow;
@@ -41,16 +82,16 @@ legend h2{
 	margin:5px;
 	float: left;
 	width: 250px;
-	text-align: center;
+	text-adtgn: center;
 }
 
 .box:nth-child(even){ /*định dạng các block chẳn*/
-	border-top: 5px solid rgb(156,211,165);
+	border-top: 5px sodtd rgb(156,211,165);
 	margin-right: 15px;
 }
 
 .box:nth-child(odd){ /*định dạng các block lẻ*/
-	border-top: 5px solid rgb(119,184,219);
+	border-top: 5px sodtd rgb(119,184,219);
 	margin-left: 15px;
 }
 
@@ -71,9 +112,9 @@ legend h2{
 }
 
 .action{
-	font:italic bold 10px arial;
+	font:itadtc bold 10px arial;
 	margin-right: 30px;
 	margin-bottom: 10px;
 	color:#f96;
-	text-align: right;
+	text-adtgn: right;
 }
