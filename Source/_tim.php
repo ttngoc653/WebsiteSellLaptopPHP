@@ -48,10 +48,25 @@
 			$rom=$_GET['rom'];
 		}
 
-        //echo "select * from cpu,san_pham where san_pham.loaicpu like cpu.loai and san_pham.tensp like '%".$tensp."%' and san_pham.hangsx like '%".$hang."%' and hdh like '%".$hdh."%' and san_pham.gia BETWEEN '".$giatu."' AND '".$giaden."' and ramdungluong like '%".$ram."%' and san_pham.masp in(SELECT o_dia_cung.masp from o_dia_cung GROUP BY o_dia_cung.masp HAVING sum(o_dia_cung.dungluong) like '%".$rom."%') AND san_pham.loaicpu in (SELECT cpu.loai FROM cpu WHERE cpu.congnghe like '%".$cpu."%') and san_pham.tencartmanhinh in (SELECT cart_man_hinh.tencart FROM cart_man_hinh WHERE cart_man_hinh.thietke like '%".$dohoa."%')";
-		$rs=ConnectQuery("select * from cpu,san_pham where san_pham.loaicpu like cpu.loai and san_pham.tensp like '%".$tensp."%' and san_pham.hangsx like '%".$hang."%' and hdh like '%".$hdh."%' and san_pham.gia BETWEEN '".$giatu."' AND '".$giaden."' and ramdungluong like '%".$ram."%' and san_pham.masp in(SELECT o_dia_cung.masp from o_dia_cung GROUP BY o_dia_cung.masp HAVING sum(o_dia_cung.dungluong) like '%".$rom."%') AND san_pham.loaicpu in (SELECT cpu.loai FROM cpu WHERE cpu.congnghe like '%".$cpu."%') and san_pham.tencartmanhinh in (SELECT cart_man_hinh.tencart FROM cart_man_hinh WHERE cart_man_hinh.thietke like '%".$dohoa."%')");
+		if(isset($_GET['page'])){
+			$sptu=($_GET['page']-1)*10;
+			$rs=ConnectQuery($_SESSION['sql']['name']." limit ".$sptu.",10");
+		}
+        else{
+        	$_SESSION['sql']['name']="select * from cpu,san_pham where san_pham.loaicpu like cpu.loai and san_pham.tensp like '%".$tensp."%' and san_pham.hangsx like '%".$hang."%' and hdh like '%".$hdh."%' and san_pham.gia BETWEEN '".$giatu."' AND '".$giaden."' and ramdungluong like '%".$ram."%' and san_pham.masp in(SELECT o_dia_cung.masp from o_dia_cung GROUP BY o_dia_cung.masp HAVING sum(o_dia_cung.dungluong) like '%".$rom."%') AND san_pham.loaicpu in (SELECT cpu.loai FROM cpu WHERE cpu.congnghe like '%".$cpu."%') and san_pham.tencartmanhinh in (SELECT cart_man_hinh.tencart FROM cart_man_hinh WHERE cart_man_hinh.thietke like '%".$dohoa."%')";
+        	$rs=ConnectQuery($_SESSION['sql']['name']);
+        	$slSP=$rs->num_rows;
+        	$_SESSION['sql']['trang']=round($slSP/10);
+        	if(($slSP%10)<5)
+        		$_SESSION['sql']['trang']=$_SESSION['sql']['trang']+1;
+        	$rs=ConnectQuery($_SESSION['sql']['name']." limit 0,10");
+        }
 		if($rs->num_rows==0)
-			echo "<div style=\"font-size: 16px;color: red;\"><p>CHÉ ƠI, KHÔNG CÓ SẢN PHẨM YOU CẦN TRONG DỮ LIỆU CỦA TUI ÒI!</p><p>CHÉ THÔNG CẢM NHÉ!!!</p><p>CHÚNG TUI SẼ CỐ GẮNG MÒ LAPTOP THEO YÊU CẦU CỦA CHÉ TRONG THỜI GIAN TỚI!!!</p></div>";
+			echo "<div style=\"font-size: 16px;color: red;\">
+					<p>CHÉ ƠI, KHÔNG CÓ SẢN PHẨM YOU CẦN TRONG DỮ LIỆU CỦA TUI ÒI!</p>
+					<p>CHÉ THÔNG CẢM NHÉ!!!</p>
+					<p>CHÚNG TUI SẼ CỐ GẮNG MÒ LAPTOP THEO YÊU CẦU CỦA CHÉ TRONG THỜI GIAN TỚI!!!</p>
+				</div>";
 		while ($row=$rs->fetch_assoc()) {
 				?><div style="border: outset; margin: 5px;float: left;width: 150px;height: 200px; text-align: center;border-radius: 10px;">
 				<a href="index.php?act=chitiet&masp=<?php echo $row['masp']; ?>">
@@ -63,9 +78,14 @@
 					if(isset($role)&&laySoLuongHienTai($row['masp'])>0) echo "<a href=\"".$_SERVER["REQUEST_URI"]."&gio=".$row['masp']."\"><button style=\"height: 20px; background-color: #E6E6E6;color: blue;border-radius: 5px;\">Thêm vào giỏ</button></a>"; 
 				?>
                 </div>
-			<?php 
-				}
+                	<?php } ?>
+                <p style="text-align: center;margin-top: 430px;">
+		<?php 
+			for ($i=1; $i <= $_SESSION['sql']['trang']; $i++) {
+				echo "<a href=\"index.php?act=timkiem&page=".$i."\" title=\"\">(".$i.")</a> ";
+			}
 		?>
+			</p>
   		</div>
 	</div>
 	
