@@ -111,9 +111,9 @@
         </table>
         <div style="text-align: center;">
           <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput" style="text-align: right;">Địa chỉ nhận hàng: </label>  
+            <label class="col-md-4 control-label" for="textinput" style="text-align: right;">Địa chỉ nhận hàng: <a style="color: red;">*</a></label>  
             <div class="col-md-7">
-              <input id="diachi" name="diachi" type="text" class="form-control input-md" value=""/>
+              <input id="diachi" name="diachi" type="text" class="form-control input-md" value="" placeholder="bắt buộc"/>
             </div>
           </div>
           <div>

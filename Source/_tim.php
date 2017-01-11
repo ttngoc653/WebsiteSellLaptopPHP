@@ -17,10 +17,10 @@
 		$giatu=0;
 		$giaden=1000000000;
 		if(isset($_GET['tu'])){
-			$giatu=$_GET['tu'];
+			$giatu=$_GET['tu']."00000";
 		}
 		if(isset($_GET['den'])){
-			$giaden=$_GET['den'];
+			$giaden=$_GET['den']."00000";
 		}
 
 		$cpu="";
@@ -51,7 +51,7 @@
         //echo "select * from cpu,san_pham where san_pham.loaicpu like cpu.loai and san_pham.tensp like '%".$tensp."%' and san_pham.hangsx like '%".$hang."%' and hdh like '%".$hdh."%' and san_pham.gia BETWEEN '".$giatu."' AND '".$giaden."' and ramdungluong like '%".$ram."%' and san_pham.masp in(SELECT o_dia_cung.masp from o_dia_cung GROUP BY o_dia_cung.masp HAVING sum(o_dia_cung.dungluong) like '%".$rom."%') AND san_pham.loaicpu in (SELECT cpu.loai FROM cpu WHERE cpu.congnghe like '%".$cpu."%') and san_pham.tencartmanhinh in (SELECT cart_man_hinh.tencart FROM cart_man_hinh WHERE cart_man_hinh.thietke like '%".$dohoa."%')";
 		$rs=ConnectQuery("select * from cpu,san_pham where san_pham.loaicpu like cpu.loai and san_pham.tensp like '%".$tensp."%' and san_pham.hangsx like '%".$hang."%' and hdh like '%".$hdh."%' and san_pham.gia BETWEEN '".$giatu."' AND '".$giaden."' and ramdungluong like '%".$ram."%' and san_pham.masp in(SELECT o_dia_cung.masp from o_dia_cung GROUP BY o_dia_cung.masp HAVING sum(o_dia_cung.dungluong) like '%".$rom."%') AND san_pham.loaicpu in (SELECT cpu.loai FROM cpu WHERE cpu.congnghe like '%".$cpu."%') and san_pham.tencartmanhinh in (SELECT cart_man_hinh.tencart FROM cart_man_hinh WHERE cart_man_hinh.thietke like '%".$dohoa."%')");
 		if($rs->num_rows==0)
-			echo "<p>CHÉ ƠI LOẠI NÀY KHÔNG CÓ TRONG DỮ LIỆU CỦA TUI ÒI!</p><p>CHÉ THÔNG CẢM NHÉ!!!</p>";
+			echo "<div style=\"font-size: 16px;color: red;\"><p>CHÉ ƠI, KHÔNG CÓ SẢN PHẨM YOU CẦN TRONG DỮ LIỆU CỦA TUI ÒI!</p><p>CHÉ THÔNG CẢM NHÉ!!!</p><p>CHÚNG TUI SẼ CỐ GẮNG MÒ LAPTOP THEO YÊU CẦU CỦA CHÉ TRONG THỜI GIAN TỚI!!!</p></div>";
 		while ($row=$rs->fetch_assoc()) {
 				?><div style="border: outset; margin: 5px;float: left;width: 150px;height: 200px; text-align: center;border-radius: 10px;">
 				<a href="index.php?act=chitiet&masp=<?php echo $row['masp']; ?>">
