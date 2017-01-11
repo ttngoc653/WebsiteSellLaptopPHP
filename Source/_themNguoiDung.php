@@ -33,7 +33,7 @@ if (isset($role)) {
             else{
               //thực hiện việc lưu trữ dữ liệu vào db
               $sql = "insert INTO nguoi_dung(tendn,mk,hoten,ngsinh,sdt,email,quyen,gioitinh) VALUES ('".$tendn."','".md5($mk)."','".$hoten."','".$ngsinh."','".$sdt."','".$email."','0','".$_POST['gioitinh']."')";
-              echo "<p>$sql</p>";
+              //echo "<p>$sql</p>";
               // thực thi câu $sql với biến conn lấy từ file hamKetNoiCSDL.php
               $rs=ConnectQuery($sql);
               echo "chúc mừng ".$hoten." đã đăng ký thành công";
@@ -86,7 +86,7 @@ if (isset($role)) {
     <div class="form-group">
       <label class="col-md-5 control-label" for="textinput">Số Điện Thoại: </label>  
       <div class="col-md-4">
-        <input id="sdt" name="sdt" type="number" maxlength="11" minlength="9" min="900000000" max="1290000000" class="form-control input-md" value="<?php if(isset($_POST['sdt'])) echo $_POST['sdt']; ?>">
+        <input id="sdt" name="sdt" type="number" maxlength="11" minlength="9" min="900000000" max="1990000000" class="form-control input-md" value="<?php if(isset($_POST['sdt'])) echo $_POST['sdt']; ?>">
       </div>
     </div>
     <!-- Text input-->

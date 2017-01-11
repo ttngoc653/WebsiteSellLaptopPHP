@@ -1,67 +1,57 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <!-- sremove-9caa494cf5dd5d66eb198271b9be17cc --><script></script><!-- sremove-end -->
-  <!-- sremove-ec54aaae5568947f433ab2c8d75fca91 --><script></script><!-- sremove-end -->
-</head>
-<body>
-
-<div class="container">
-  <h2>Table</h2>
-  <p>The .table-responsive class creates a responsive table which will scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, there is no difference:</p>                                                                                      
-  <div class="table-responsive">          
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Stt</th>
-        <th>Thông tin đơn hàng</th>
-        <th>Thông tin người mua</th>
-        <th>Tình trạng đơn hàng</th>
-        <th>Thao tác</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Anna</td>
-        <td>Pitt</td>
-        <td>New York</td>
-        <td>Xem chi tiết</td>
-      </tr>
-    </tbody>
-    <tbody>
-      <tr>
-        <td>2</td>
-        <td>Anna</td>
-        <td>Pitt</td>
-        <td>New York</td>
-        <td>Xem chi tiết</td>
-      </tr>
-    </tbody>
-    <tbody>
-      <tr>
-        <td>3</td>
-        <td>Anna</td>
-        <td>Pitt</td>
-        <td>New York</td>
-        <td>Xem chi tiết</td>
-      </tr>
-    </tbody>
-    <tbody>
-      <tr>
-        <td>4</td>
-        <td>Anna</td>
-        <td>Pitt</td>
-        <td>New York</td>
-        <td>Xem chi tiết</td>
-      </tr>
-    </tbody>
-    
-  </table>
+<?php 
+if(!isset($_SESSION['name']))
+  echo "<script type=\"text/javascript\" charset=\"utf-8\" async defer>window.history.back(); </script>";
+else{
+  if(isset($_GET['doitt'])){
+    doiTinhTrangDonHang($_GET['doitt']);
+    echo "<script type=\"text/javascript\" charset=\"utf-8\" async defer>window.history.back(); </script>";
+  }
+  $sqlstr="";
+  if($_SESSION['quyen']==0)
+    $sqlstr=" where taikhoan like '".$_SESSION['name']."'";
+?>
+<div class="panel panel-default" style="opacity: 0.9">
+  <div class="panel-heading" style="font-weight: bold;font-size: 18px;"><?php echo $_SESSION['quyen']==0?"LỊCH SỬ MUA HÀNG":"QUẢN LÝ ĐƠN HÀNG"; ?></div>
+  <div class="panel-body">
+    <div class="table-responsive">
+    <table class="table" style="color: black;">
+      <thead>
+        <tr>
+          <th>NGÀY ĐẶT HÀNG</th>
+          <th>THÔNG TIN NGƯỜI MUA</th>
+          <th>THÔNG TIN ĐƠN HÀNG</th>
+          <th>TÌNH TRẠNG</th>
+          <?php if($_SESSION['quyen']==1) echo "<th>THAO TÁC</th>"; ?>
+        </tr>
+      </thead>
+    <?php 
+      $rs=ConnectQuery("select * from don_hang".$sqlstr." order by ngaylap desc"); 
+      while($row=$rs->fetch_assoc()){
+    ?>
+      <tbody><a href="" title="">
+        <tr style="background-color: <?php echo $row['dagiao']==0?"#9f6":"#f99"; ?>;">
+          <td><?php echo $row['ngaylap']; ?></td>
+          <td>
+            <?php echo TenNguoiDung($row['taikhoan']); ?><br/>
+            <?php echo $row['diachinhan']; ?>
+          </td>
+          <td>
+            Tiền thanh toán: <?php echo number_format($row['tongtien']); ?> VNĐ<br/>
+            Số lượng sản phẩm: <?php echo slSPTrongDonHang($row['madh']); ?>
+          </td>
+          <td style="text-align: center;"><?php echo $row['dagiao']=="0"?"đã giao":"chưa giao"; ?></td>
+          <td>
+            <a href="index.php?act=ctdonhang&id=<?php echo $row['madh']; ?>" style="color: black;" title="">Xem Chi tiết</a><br/>
+        <?php
+          if($_SESSION['quyen']==1){ ?>
+            <a href="index.php?act=qldonhang&doitt=<?php echo $row['madh']; ?>"  style="color: black;" title="">Đổi tình trạng</a>
+        <?php } ?>
+          </td>
+        </tr>
+      </a></tbody>
+      <?php } ?>
+    </table>
+    </div>
   </div>
 </div>
-
-</body>
-</html>
+<?php } ?>

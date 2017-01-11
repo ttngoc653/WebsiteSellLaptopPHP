@@ -8,8 +8,12 @@
           				<label class="radio-inline"><input name="hang" checked="checked" value="" type="radio">Tất cả</label> 
 						<?php  
   							$rs= ConnectQuery("select distinct hangsx from san_pham order by hangsx");
-  							while ($row=$rs->fetch_assoc()) {
-  								$a=$row["hangsx"];
+  							$i=1;
+              while ($row=$rs->fetch_assoc()) {
+                if($i%7==0 && $i!=0)
+                  echo "</a></li><a><li>";
+                $a=$row["hangsx"];
+                $i+=1;
   						?>
     					<label class="radio-inline"><input name="hang" value="<?php echo $a; ?>" type="radio"><?php echo $a; ?></label> 
     					<?php
@@ -21,10 +25,14 @@
           			</a></li>
           			<li><a><b>Thiết kế card đồ họa:</b>&nbsp; &nbsp; 
           				<label class="radio-inline"><input name="dohoa" checked="checked" value="" type="radio">Tất cả</label> 
-						<?php  
+						<?php
   							$rs= ConnectQuery("select distinct thietke from cart_man_hinh");
+                $i=1;
   							while ($row=$rs->fetch_assoc()) {
+                  if($i%5==0 && $i!=0)
+                    echo "</a></li><a><li>";
   								$a=$row["thietke"];
+                  $i+=1;
   						?>
     					<label class="radio-inline"><input name="dohoa" value="<?php echo $a; ?>" type="radio"><?php echo $a; ?></label> 
     					<?php
@@ -35,8 +43,12 @@
 						<label class="radio-inline"><input name="ram" checked="checked" value="" type="radio">Tất cả</label> 
 					<?php  
 					  	$rs= ConnectQuery("select DISTINCT san_pham.ramdungluong FROM san_pham ORDER BY san_pham.ramdungluong");
+              $i=1;
 					  	while ($row=$rs->fetch_assoc()) {
+                if($i%5==0 && $i!=0)
+                  echo "</a></li><a><li>";
 					  		$a=$row["ramdungluong"];
+                $i+=1;
 					?>
 					  	<label class="radio-inline"><input name="ram" value="<?php echo $a; ?>" type="radio"><?php echo $a; ?> GB</label> 
 					<?php

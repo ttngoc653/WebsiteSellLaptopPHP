@@ -139,7 +139,31 @@
         }   
     }
     function capnhatLaiSoLuong($id,$sl){
-      $conlai=laySoLuongHienTai($id)-$sl;
-      ConnectQuery("update san_pham SET slkho='".$conlai."' WHERE masp like '".$id."'");
+        $conlai=laySoLuongHienTai($id)-$sl;
+        ConnectQuery("update san_pham SET slkho='".$conlai."' WHERE masp like '".$id."'");
+    }
+    function doiTinhTrangDonHang($madh){
+        $tinhtranghientai=0;
+        $rs=ConnectQuery("select dagiao from don_hang where madh like '".$madh."'");
+        while($row=$rs->fetch_assoc()){
+            $tinhtranghientai=$row['dagiao'];
+        }
+        $tinhtranghientai=($tinhtranghientai+1)%2;
+        ConnectQuery("update don_hang set dagiao='".$tinhtranghientai."' where madh like '".$madh."'");
+    }
+    function TenNguoiDung($makh){
+        $rs=ConnectQuery("select hoten from nguoi_dung where tendn like '".$makh."'");
+        while($row=$rs->fetch_assoc()){
+            return $row['hoten'];
+        }
+    }
+    function slSPTrongDonHang($madh){
+        $rs=ConnectQuery("select count(soluongsp) sumsl from chi_tiet_don_hang where madh like '".$madh."'");
+        while($row=$rs->fetch_assoc()){
+            return $row['sumsl'];
+        }   
+    }
+    function SoTrangTK($sql){
+        
     }
 ?>

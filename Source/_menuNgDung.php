@@ -53,6 +53,6 @@
  		else{ ?>
  		<dt><a href="index.php?act=giohang"><button style="width: 152px;">GIỎ HÀNG</button></a></dt>
  		<dt>
- 		<a href="index.php?act=quanlydonhang"><button style="width: 152px;">LỊCH SỬ MUA</button></a></dt><?php } ?>
+ 		<a href="index.php?act=qldonhang"><button style="width: 152px;">LỊCH SỬ MUA</button></a></dt><?php } ?>
  	</dl>
 </div>
