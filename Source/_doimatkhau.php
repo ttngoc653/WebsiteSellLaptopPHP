@@ -1,5 +1,13 @@
 <?php
     require_once("hamKetNoiCSDL.php");
+?>
+  <form action="" method="post" name="frm_doiMK" id="frm_doiMK" onsubmit="return check_submit_frm_doiMK()">
+    <fieldset>
+      <div class="panel panel-default" style="opacity: 0.9;border-radius: 10px">
+        <legend><div class="panel-heading" style="background-color: yellow;">Mẫu đổi mật khẩu</div></legend>
+        <div class="panel-body">
+        <p style="font-stretch: bold;color: red;">
+        <?php 
     if(!isset($_SESSION['name']))
         echo "<script type=\"text/javascript\" charset=\"utf-8\" async defer>window.history.back(); </script>";
     if (isset($_POST["subDoiMK"])) {
@@ -8,7 +16,7 @@
       $mkm = md5($_POST['mkm']);
       $mkm1 = md5($_POST['mkm2']);
       //Kiểm tra điều kiện bắt buộc đối với các field không được bỏ trống
-      if ($_POST['mkm'] != $mk ) {
+      if ($mkm1 != $mkm ) {
          echo "2 mật khẩu không trùng nhau. Yêu cầu sửa/ nhập lại mật khẩu mới";
       }else{
         //thực hiện việc lưu trữ dữ liệu vào db
@@ -19,17 +27,12 @@
           echo "bạn đã nhập sai mật khẩu cũ nên không thể thay đổi mật khẩu của mình";
         else{
           $sql = "update nguoi_dung set mk like '".$mkm."' where tendn like '".$_SESSION['name']."'";
-          ConnectQuery("")
+          ConnectQuery($sql);
         echo "chúc mừng bạn đã đổi mật khẩu thành công";
         }
       }
-    }
-?>
-  <form action="" method="post" name="frm_doiMK" id="frm_doiMK" onsubmit="return check_submit_frm_doiMK()">
-    <fieldset>
-      <div class="panel panel-default" style="opacity: 0.9;border-radius: 10px">
-        <legend><div class="panel-heading">Mẫu đổi mật khẩu</div></legend>
-        <div class="panel-body">
+    } ?>  
+        </p>  
           <div class="form-group">
             <label class="col-md-5 control-label" style="text-align: right;" for="textinput">Mật khẩu cũ: </label>  
             <div class="col-md-4">

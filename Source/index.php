@@ -28,15 +28,15 @@
     <div class="col-lg-10">
     <?php
       if (isset($_GET["act"])) {
-        switch ($_GET["act"]) {
+        switch ($_GET["act"]) {          
+          case "themsp":
+            include_once "./_themSP.php";
+            break;
           case "themcpu":
             include_once "./_themCPU.php";
             break;
           case "themnsx":
             include_once "./_themHangSX.php";
-            break;
-          case "themngdung":
-            include_once "./_themNguoiDung.php";
             break;
           case "themcartmh":
             include_once "./_themCartMH.php";
@@ -44,17 +44,23 @@
           case "chitiet":
             include_once "./_ChitietSP.php";
             break;
+          case "themngdung":
+            include_once "./_themNguoiDung.php";
+            break;
           case "dangxuat":
             include_once "./_dangXuat.php";
             break;
           case "timkiem":
             include_once "./_tim.php";
             break;
+          case "doimk":
+            include_once "./_doimatkhau.php";
+            break;
           case "giohang":
             include_once "./_quanlyGioHang.php";
             break;
-          case "themsp":
-            include_once "./_themSP.php";
+          case "xemthongtin":
+            include_once "./_thongtinNgDung.php";
             break;
           default:
             echo "<div style=\"margin-top: 256px; color:red; font-size: 20px;\"><b>

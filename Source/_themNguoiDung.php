@@ -32,7 +32,7 @@ if (isset($role)) {
             }
             else{
               //thực hiện việc lưu trữ dữ liệu vào db
-              //$sql = "insert INTO nguoi_dung(tendn,mk,hoten,ngsinh,sdt,email,quyen,gioitinh) VALUES ('".$tendn."','".md5($mk)."','".$hoten."','".$ngsinh."','".$sdt."','".$email."','0','".$_POST['gioitinh']."')";
+              $sql = "insert INTO nguoi_dung(tendn,mk,hoten,ngsinh,sdt,email,quyen,gioitinh) VALUES ('".$tendn."','".md5($mk)."','".$hoten."','".$ngsinh."','".$sdt."','".$email."','0','".$_POST['gioitinh']."')";
               echo "<p>$sql</p>";
               // thực thi câu $sql với biến conn lấy từ file hamKetNoiCSDL.php
               $rs=ConnectQuery($sql);
