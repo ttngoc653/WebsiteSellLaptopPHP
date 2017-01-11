@@ -2,24 +2,30 @@
     require_once("hamKetNoiCSDL.php");
     if(!isset($_SESSION['name']))
         echo "<script type=\"text/javascript\" charset=\"utf-8\" async defer>window.history.back(); </script>";
-    if (isset($_POST["btn_submit"])) {
-        //lấy thông tin từ các form bằng phương thức POST
-
-        $mk = $_POST["mk"];
-
-        //Kiểm tra điều kiện bắt buộc đối với các field không được bỏ trống
-        if ($tendn != $mk ) {
-           echo "2 mật khẩu không trùng nhau. Yêu cầu sửa lại 2 mật khẩu này";
-        }else{
-            //thực hiện việc lưu trữ dữ liệu vào db
-            $sql = "update nguoi_dung set mk=";
-            // thực thi câu $sql với biến conn lấy từ file connection.php
-          $rs=ConnectQuery($sql);
-           echo "chúc mừng bạn đã đăng ký thành công";
+    if (isset($_POST["subDoiMK"])) {
+      //lấy thông tin từ các form bằng phương thức POST
+      $mkc = md5($_POST["mkc"]);
+      $mkm = md5($_POST['mkm']);
+      $mkm1 = md5($_POST['mkm2']);
+      //Kiểm tra điều kiện bắt buộc đối với các field không được bỏ trống
+      if ($_POST['mkm'] != $mk ) {
+         echo "2 mật khẩu không trùng nhau. Yêu cầu sửa/ nhập lại mật khẩu mới";
+      }else{
+        //thực hiện việc lưu trữ dữ liệu vào db
+        $sql = "select * from nguoi_dung where mk like '".$mkc."' and tendn like '".$_SESSION['name']."'";
+        // thực thi câu $sql với biến conn lấy từ file connection.php
+        $rs=ConnectQuery($sql);
+        if($rs->num_rows==0)
+          echo "bạn đã nhập sai mật khẩu cũ nên không thể thay đổi mật khẩu của mình";
+        else{
+          $sql = "update nguoi_dung set mk like '".$mkm."' where tendn like '".$_SESSION['name']."'";
+          ConnectQuery("")
+        echo "chúc mừng bạn đã đổi mật khẩu thành công";
+        }
       }
     }
 ?>
-  <form action="" method="post" name="nguoi_dung" id="nguoi_dung" onsubmit="return check_submit_nguoi_dung()">
+  <form action="" method="post" name="frm_doiMK" id="frm_doiMK" onsubmit="return check_submit_frm_doiMK()">
     <fieldset>
       <div class="panel panel-default" style="opacity: 0.9;border-radius: 10px">
         <legend><div class="panel-heading">Mẫu đổi mật khẩu</div></legend>
@@ -50,7 +56,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="dangki"></label>
               <div class="col-md-8">
-                <button id="dangki" name="dangki" class="btn btn-success">Hoàn thành</button>  
+                <button id="subDoiMK" name="subDoiMK" class="btn btn-success">Hoàn thành</button>  
               </div>
             </div>
         </div>
@@ -58,33 +64,33 @@
     </fieldset>
   </form>
   <script language="javascript" type="text/javascript">
-            //document.forms['nguoi_dung'].name.focus();
-  function check_submit_nguoi_dung()
+            //document.forms['frm_doiMK'].name.focus();
+  function check_submit_frm_doiMK()
   {
-    var frm = window.document.nguoi_dung;     
+    var frm = window.document.frm_doiMK;     
        if(frm.mkc.value=='')
        {
           alert('Xin vui lòng nhập mật khẩu cũ !');      
-          document.forms['nguoi_dung'].mkc.focus();
+          document.forms['frm_doiMK'].mkc.focus();
           return false;
        }
        else if(frm.mkm.value=='')
        {
           alert('Xin vui lòng nhập mật khẩu mới !');
-          document.forms['nguoi_dung'].mkm.focus();      
+          document.forms['frm_doiMK'].mkm.focus();      
           return false;
        }
 
        else if(frm.mkm2.value=='')
        {
           alert('Xin vui lòng nhập dữ liệu vào ô nhập lại mật khẩu mới !');
-          document.forms['nguoi_dung'].mkm2.focus();      
+          document.forms['frm_doiMK'].mkm2.focus();      
           return false;
        }
        else if(frm.mkm.value!=frm.mkm2.value)
        {
           alert('Hai mật khẩu không trùng nhau. Hãy sửa lại sao cho 2 mật khẩu mới phải trùng nhau !');
-          document.forms['nguoi_dung'].mkm.focus();      
+          document.forms['frm_doiMK'].mkm.focus();      
           return false;
        }
        else           
