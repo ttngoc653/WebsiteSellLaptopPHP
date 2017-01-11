@@ -1,17 +1,15 @@
 <?php
-
+	
+	if(isset($_COOKIE['name'])){
+		$_SESSION['quyen']= $_COOKIE['quyen'];
+		$_SESSION['name']= $_COOKIE['name'];
+	}
 	if(isset($_SESSION['name'])){
 		$role=$_SESSION['quyen'];
-		?> <div style="margin-left: 100px; text-align: right; margin-top: 5px;"><a href="index.php?act=xemthongtin"><img src="./image/<?php echo $_SESSION['name']; ?>.png" height="35px" alt=""/></a>
+		?> <div style="margin-left: 100px; text-align: right; margin-top: 5px;"><a href="index.php?act=xemthongtin"><img src="./image/user/<?php echo $_SESSION['name']; ?>.png" height="35px" alt=""/></a>
 		  	<a href="index.php?act=giohang" title=""><img src="./image/shopping.png" width="35px" alt=""/> <span class="badge"><?php echo cart_sum_items(); ?></span> sản phẩm</a> <a href="index.php?act=dangxuat" class="btn btn-info btn-md" role="button">Đăng xuất</a>&nbsp;
 		</div>
 		<?php
-	}
-	else if(isset($_COOKIE['name'])){
-		$role= $_COOKIE['quyen'];
-		echo "<div style=\"margin-left: 100px; text-align: right; margin-top: 5px;\">
-		  	<a href=\"index.php?act=giohang\" title=\"\"><img src=\"./image/shopping.png\" width=\"35px\" alt=\"\"/> <span class=\"badge\">"; ?><?php echo cart_sum_items(); ?><?php echo "</span> sản phẩm</a> <a href=\"index.php?act=dangxuat\" class=\"btn btn-info btn-md\" role=\"button\">Đăng xuất</a>&nbsp;
-		</div>";
 	}
 	else if(isset($_POST['dangnhap'])){
 		//echo "select * from nguoi_dung where tendn like '".$_POST['us']."' and mk like '".md5($_POST['pw'])."'";
@@ -58,7 +56,6 @@
 			</form>';
 		}
 	}
-	
 	else{
 			echo '<form action="" class="form-horizontal" method="post" accept-charset="utf-8">
 			Tên đăng nhập: <input style="color: black;" type="text" name="us" id="us" size="12"> &nbsp; &nbsp; 
