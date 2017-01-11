@@ -18,7 +18,7 @@ $rr=ConnectQuery("select * from san_pham where masp='".$_GET['masp']."'");
  		<img src="./image/<?php echo $row['masp']."/".$row['icon']; ?>" width="300px" width="300px" />     
   </div>
   <div class="col-lg-7">
-   	<form class="form-horizontal" action="index.html" method="POST">
+   	<form class="form-horizontal" action="index.php" method="GET">
       <div class="form-group">
    			<h1 style="text-align: center;"><?php echo $row['hangsx']." ".$row['tensp']; ?></h1>
       </div>
@@ -27,15 +27,21 @@ $rr=ConnectQuery("select * from san_pham where masp='".$_GET['masp']."'");
         <label control-label">Số lượng bán: <?php echo SoLuongBan($row['masp']); ?></label><br>
 		    <label for="SoLuongXem" control-label">Số lượng xem: <?php echo $row['luotview'];?></label>
 			  <?php 
-        if(isset($role)||laySoLuongHienTai($row['masp'])==0)
+        if(isset($role)||laySoLuongHienTai($row['masp'])<=0){
+          $sl=0;
+          if(isset($_SESSION['cart'][$row['masp']]))
+            $sl=$_SESSION['cart'][$row['masp']];
           echo '<div class="form-group">
-        <label for="SoLuongDat" control-label">Số lượng đặt:</label><input type="number" min="0" max="<?php echo laySoLuongHienTai($row[\'masp\']); ?>" class="form-control" id="SoLuongDat">
-      </div>
-        <div class="form-group">
-      <button type="submit" class="btn btn-success">         
-            <i class="fa fa-check"></i>Thêm vào giỏ hàng
-      </button>  
-    </div>'; ?>
+          <input type="hidden" name="gio" value="'.$row['masp'].'" placeholder="">
+        <label for="SoLuongDat" class="col-md-7" style="text-align:right;" control-label">Số lượng muốn đặt:</label>
+        <input class="col-md-3" type="number" name="sl" value="'.$sl.'" min="0" max="<?php echo laySoLuongHienTai($row[\'masp\']); ?>" class="form-control" id="SoLuongDat">
+          </div>
+            <div class="form-group">
+          <button type="submit" class="btn btn-success">         
+                <i class="fa fa-check"></i>Thêm vào giỏ hàng
+          </button>  
+        </div>';
+        } ?>
     </form>     
   </div>
 </div>
