@@ -147,21 +147,7 @@ function check_submit_nguoi_dung(){
     document.forms['themNgDung'].tendn.focus();
     return false;
   }
-  else if(frm.hoten.value=='') {
-    alert('Xin vui lòng nhập Họ tên !');
-    document.forms['themNgDung'].hoten.focus();     
-    return false;
-  }
-  else if(frm.ngsinh.value=='') {
-    alert('Xin vui lòng nhập Ngày Sinh !');
-    document.forms['themNgDung'].ngsinh.focus();      
-    return false;
-  }
-  else if(frm.sdt.value=='') {
-    alert('Xin vui lòng nhập Số điện thoại !');
-    document.forms['themNgDung'].sdt.focus();     
-    return false;
-  }
+  
   else if(frm.email.value=='') {
     alert('Xin vui lòng nhập email !');
     document.forms['themNgDung'].email.focus();     
