@@ -25,7 +25,7 @@
 ?>
   <br/>
   <div class="row">
-    <div class="col-lg-10">
+    <div style="width: 848px;float: left;margin-left: 15px;">
     <?php
       if (isset($_GET["act"])) {
         switch ($_GET["act"]) {          
@@ -76,7 +76,7 @@
       }
       ?>
     </div>
-    <div class="col-lg-2 text-right">
+    <div class="text-right" style="float: right;width: 165px;margin-right: 15px;">
       <?php include_once "./_phaiWeb.php"; ?>
     </div>
   </div>

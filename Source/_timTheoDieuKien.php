@@ -1,5 +1,5 @@
 <form action="" method="get" accept-charset="utf-8">
-		  <div class="input-group input-group-sm col-xs-3">
+		  <div class="input-group input-group-sm" style="width: 251px;">
       <input type="hidden" name="act" value="timkiem">
      		<div class="input-group-btn">
         		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
