@@ -153,26 +153,7 @@ function check_submit_nguoi_dung(){
     document.forms['themNgDung'].tendn.focus();
     return false;
   }
-  else if(frm.mk.value=='') {
-    alert('Xin vui lòng nhập mật khẩu !');
-    document.forms['themNgDung'].mk.focus();      
-    return false;
-  }
-  else if(frm.mk2.value=='') {
-    alert('Xin vui lòng nhập vào o nhập lại mật khẩu !');
-    document.forms['themNgDung'].mk2.focus();      
-    return false;
-  }
-  else if(frm.mk2.value!=frm.mk2.value) {
-    alert(' Hai mật khẩu không khớp nhau\nVui lòng kiểm tra lại !');
-    document.forms['themNgDung'].mk.focus();      
-    return false;
-  }
-  else if(frm.hoten.value=='') {
-    alert('Xin vui lòng nhập Họ tên !');
-    document.forms['themNgDung'].hoten.focus();			
-    return false;
-  }
+
   else if(frm.ngsinh.value=='') {
     alert('Xin vui lòng nhập Ngày Sinh !');
     document.forms['themNgDung'].ngsinh.focus();			

@@ -32,7 +32,9 @@
           case "themsp":
             include_once "./_themSP.php";
             break;
-
+          case "themcpu":
+            include_once "./_themCPU.php";
+            break;
           case "themnsx":
             include_once "./_themHangSX.php";
             break;
