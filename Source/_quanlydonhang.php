@@ -29,7 +29,7 @@ else{
       while($row=$rs->fetch_assoc()){
     ?>
       <tbody><a href="" title="">
-        <tr style="background-color: <?php echo $row['dagiao']==0?"#9f6":"#f99"; ?>;">
+        <tr style="background-color: <?php echo $row['dagiao']==1?"#9f6":"#f99"; ?>;">
           <td><?php echo $row['ngaylap']; ?></td>
           <td>
             <?php echo TenNguoiDung($row['taikhoan']); ?><br/>
@@ -39,9 +39,9 @@ else{
             Tiền thanh toán: <?php echo number_format($row['tongtien']); ?> VNĐ<br/>
             Số lượng sản phẩm: <?php echo slSPTrongDonHang($row['madh']); ?>
           </td>
-          <td style="text-align: center;"><?php echo $row['dagiao']=="0"?"đã giao":"chưa giao"; ?></td>
+          <td style="text-align: center;"><?php echo $row['dagiao']=="1"?"đã giao":"chưa giao"; ?></td>
           <td>
-            <a href="index.php?act=ctdonhang&id=<?php echo $row['madh']; ?>" style="color: black;" title="">Xem Chi tiết</a><br/>
+            <a href="index.php?act=ctdonhang&madh=<?php echo $row['madh']; ?>" style="color: black;" title="">Xem Chi tiết</a><br/>
         <?php
           if($_SESSION['quyen']==1){ ?>
             <a href="index.php?act=qldonhang&doitt=<?php echo $row['madh']; ?>"  style="color: black;" title="">Đổi tình trạng</a>

@@ -1,8 +1,3 @@
-<div class="panel panel-default" style="opacity: 0.9">
-	<div class="panel-heading">
-    	<h3 class="panel-title" style="font: arial;">SẢN PHẨM TÌM KIẾM ĐƯỢC</h3>
-  	</div>
-  	<div class="panel-body">
     	<?php 
 		$tensp="";
 		if(isset($_GET['key'])){
@@ -57,10 +52,17 @@
         	$rs=ConnectQuery($_SESSION['sql']['name']);
         	$slSP=$rs->num_rows;
         	$_SESSION['sql']['trang']=round($slSP/10);
-        	if(($slSP%10)<5)
+        	if((($slSP%10)<5)&&($slSP%10)!=0)
         		$_SESSION['sql']['trang']=$_SESSION['sql']['trang']+1;
         	$rs=ConnectQuery($_SESSION['sql']['name']." limit 0,10");
         }
+?>
+<div class="panel panel-default" style="opacity: 0.9">
+	<div class="panel-heading">
+    	<h3 class="panel-title" style="font: arial;">SẢN PHẨM TÌM KIẾM ĐƯỢC</h3>
+  	</div>
+  	<div class="panel-body">
+<?php
 		if($rs->num_rows==0)
 			echo "<div style=\"font-size: 16px;color: red;\">
 					<p>CHÉ ƠI, KHÔNG CÓ SẢN PHẨM YOU CẦN TRONG DỮ LIỆU CỦA TUI ÒI!</p>
@@ -86,6 +88,6 @@
 			}
 		?>
 			</p>
-  		</div>
-	</div>
+  	</div>
+</div>
 	

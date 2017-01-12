@@ -163,7 +163,4 @@
             return $row['sumsl'];
         }   
     }
-    function SoTrangTK($sql){
-        
-    }
 ?>
