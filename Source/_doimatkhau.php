@@ -50,18 +50,7 @@
           </div>
 
           <!-- Password input-->
-          <div class="form-group">
-            <label class="col-md-5 control-label" style="text-align: right;" for="passwordinput">Nhập Lại Mật Khẩu Mới: </label>
-            <div class="col-md-4">
-              <input id="mkm2" name="mkm2" type="password" class="form-control input-md">
-            </div>
-          </div>
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="dangki"></label>
-              <div class="col-md-8">
-                <button id="subDoiMK" name="subDoiMK" class="btn btn-success">Hoàn thành</button>  
-              </div>
-            </div>
+          
         </div>
       </div>
     </fieldset>
