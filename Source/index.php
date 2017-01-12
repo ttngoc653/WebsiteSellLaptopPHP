@@ -68,6 +68,9 @@
           case "ctdonhang":
             include_once "./_chitietDonHang.php";
             break;
+          case "qlngdung":
+            include_once "./_quanlyNguoiDung.php";
+            break;
           default:
             echo "<div style=\"margin-top: 256px; color:red; font-size: 20px;\"><b>
               CHỨC NĂNG ĐANG TRONG QUÁ TRÌNH XÂY DỰNG. MONG MẤY CHẾ THÔNG CẢM.

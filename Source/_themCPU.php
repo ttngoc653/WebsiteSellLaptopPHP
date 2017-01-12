@@ -72,7 +72,7 @@ if (!isset($role)||$role!=1) {
 <div class="form-group">
   <label class="col-md-4 control-label" for="tocdo">Tốc độ (bình thường) (GHz)</label>  
   <div class="col-md-2">
-  <input id="tocdo" name="tocdo" type="text" placeholder="vd: 3.5" class="form-control input-md">
+  <input id="tocdo" name="tocdo" type="number" placeholder="vd: 3.5" class="form-control input-md">
     
   </div>
 </div>
@@ -90,7 +90,7 @@ if (!isset($role)||$role!=1) {
 <div class="form-group">
   <label class="col-md-4 control-label" for="tocdotoida">Tốc độ tối đa</label>  
   <div class="col-md-2">
-  <input id="tocdotoida" name="tocdotoida" type="text" placeholder="vd: 4.0" class="form-control input-md">
+  <input id="tocdotoida" name="tocdotoida" type="number" placeholder="vd: 4.0" class="form-control input-md">
     
   </div>
 </div>

@@ -20,7 +20,6 @@
     <select id="ten" name="ten" class="form-control">      
       <?php 
         $rs= ConnectQuery("select hangsx,tensp from san_pham where an=0 order by hangsx,tensp");
-                    
         while ($row= $rs->fetch_assoc()){
             $a=$row["hangsx"]." ".$row["tensp"];
             ?>
@@ -33,6 +32,48 @@
 </div>
 <p><div style="text-align: center;" id="btnSubmit" >
   <input type="submit" name="subxoaSP" class="btn btn-danger" value="ẨN SẢN PHẨM">
+</div></p>
+</fieldset> 
+</form>
+<div>
+  <h1 class="tieude">CẬP NHẬT SỐ LƯỢNG SẢN PHẨM</h1><br/>
+</div>
+<form class="form-horizontal" action="" name="themSLSP" method="post" accept-charset="utf-8" >
+<?php 
+  if(isset($_POST['subthemSLSP'])) {
+    
+    $f_ten=$_POST['tenmaythem'];
+    $f_sl=$_POST['slthem'];
+    $rs = ConnectQuery("update san_pham set slkho=".$f_sl." where tensp like $f_ten");
+    echo "<p>sản phẩm $f_ten đã thêm $ thành công</p>";
+  }
+?>
+<fieldset>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="ten">Chọn sản phẩm muốn cập nhật</label>  
+  <div class="col-md-4">      
+    <select id="tenmaythem" name="tenmaythem" class="form-control">
+      <?php 
+        $rs= ConnectQuery("select hangsx,tensp from san_pham where an=0 order by hangsx,tensp");
+        while ($row= $rs->fetch_assoc()){
+            $a=$row["hangsx"]." ".$row["tensp"];
+            ?>
+                <option value="<?php echo $row["tensp"]; ?>"><?php echo $a; ?></option>
+            <?php
+        }
+    ?>
+    </select>
+  </div>
+</div>
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-sm-4 control-label" for="slhienco">Số lượng LAPTOP muốn cập nhật (máy)</label>  
+  <div class="col-sm-4">
+    <input id="slthem" name="slthem" placeholder="vd: 50" class="form-control input-md" type="number" min="0">    
+  </div>
+</div>
+<p><div style="text-align: center;" id="btnSubmit" >
+  <input type="submit" name="subthemSLSP" class="btn btn-danger" value="THÊM SỐ LƯỢNG SẢN PHẨM">
 </div></p>
 </fieldset> 
 </form>
@@ -177,7 +218,7 @@
 <div class="form-group">
   <label class="col-sm-4 control-label" for="gia">Giá tiền (VNĐ)</label>  
   <div class="col-sm-4">
-  <input id="gia" name="gia" type="text" placeholder="18590000" class="form-control input-md">
+  <input id="gia" name="gia" type="number" min="500000" placeholder="18590000" class="form-control input-md">
     
   </div>
 </div>
@@ -244,7 +285,7 @@
 <div class="form-group">
   <label class="col-sm-4 control-label" for="rambus">Tốc độ bus (MHz)</label>  
   <div class="col-sm-2">
-  <input id="rambus" name="rambus" type="text" placeholder="vd: 1600" class="form-control input-md">
+  <input id="rambus" name="rambus" type="number" placeholder="vd: 1600" class="form-control input-md">
     
   </div>
 </div>
@@ -287,7 +328,7 @@
     <input id="odia1" name="odia1" type="text" placeholder="vd: HDD (loại thứ 1)" class="form-control input-md">
   </div>
   <div class="col-sm-4" style="text-align: left;">
-    <input id="odia1dl" name="odia1dl" type="text" placeholder="vd: 500 (dung lượng ổ cứng loại thứ 1)" class="form-control input-md">
+    <input id="odia1dl" name="odia1dl" type="number" min="0" placeholder="vd: 500 (dung lượng ổ cứng loại thứ 1)" class="form-control input-md">
   </div>
 </div>
 <div class="form-group">
@@ -295,7 +336,7 @@
     <input id="odia2" name="odia2" type="text" placeholder="vd: SSD (loại thứ 2)" class="form-control input-md">
   </div>
   <div class="col-sm-4" style="text-align: left;">
-    <input id="odia2dl" name="odia2dl" type="text" placeholder="vd: vd: 220 (dung lượng ổ cứng loại thứ 2)" class="form-control input-md">
+    <input id="odia2dl" name="odia2dl" type="number" min="0" placeholder="vd: vd: 220 (dung lượng ổ cứng loại thứ 2)" class="form-control input-md">
   </div>
 </div>
 </fieldset>
@@ -317,11 +358,11 @@
 <div class="form-group">
   <label class="col-sm-4 control-label" for="pgngang">Độ phân giải (pixels)</label>  
   <div class="col-sm-2">
-  <input id="pgngang" name="pgngang" type="text" placeholder="vd: 1366" class="form-control input-md">
+  <input id="pgngang" name="pgngang" type="number" min="0" placeholder="vd: 1366" class="form-control input-md">
     </div>
 
    <div class="col-sm-2">
-  <input id="pgdoc" name="pgdoc" type="text" placeholder="vd: 768" class="form-control input-md">
+  <input id="pgdoc" name="pgdoc" type="number" min="0" placeholder="vd: 768" class="form-control input-md">
     
   </div>
 </div>
@@ -367,7 +408,7 @@
 <div class="form-group">
   <label class="col-sm-4 control-label" for="usb">Số lượng cổng USB (cổng)</label>  
   <div class="col-sm-2">
-  <input id="usb" name="usb" type="text" placeholder="vd: 3" class="form-control input-md">
+  <input id="usb" name="usb" type="number" min="0" placeholder="vd: 3" class="form-control input-md">
   <span class="help-block">USB 3.0 + USB 2.0</span>  
   </div>
 </div>
@@ -476,7 +517,7 @@
 <div class="form-group">
   <label class="col-sm-4 control-label" for="dai">Chiều dài (mm)</label>  
   <div class="col-sm-2">
-  <input id="dai" name="dai" placeholder="vd: 292" class="form-control input-md" type="text">
+  <input id="dai" name="dai" placeholder="vd: 292" class="form-control input-md" type="number" min="1">
     
   </div>
 </div>
@@ -485,7 +526,7 @@
 <div class="form-group">
   <label class="col-sm-4 control-label" for="rong">Chiều rộng (mm)</label>  
   <div class="col-sm-2">
-  <input id="rong" name="rong" placeholder="vd: 202" class="form-control input-md" type="text">
+  <input id="rong" name="rong" placeholder="vd: 202" class="form-control input-md" type="number" min="1">
     
   </div>
 </div>
@@ -494,7 +535,7 @@
 <div class="form-group">
   <label class="col-sm-4 control-label" for="day">Độ dày (mm)</label>  
   <div class="col-sm-2">
-  <input id="day" name="day" placeholder="vd: 17" class="form-control input-md" type="text">
+  <input id="day" name="day" placeholder="vd: 17" class="form-control input-md" type="number" min="1">
     
   </div>
 </div>
@@ -512,7 +553,7 @@
 <div class="form-group">
   <label class="col-sm-4 control-label" for="slhienco">Số lượng LAPTOP hiện tại (máy)</label>  
   <div class="col-sm-4">
-  <input id="slhienco" name="slhienco" placeholder="vd: 50" class="form-control input-md" type="text">
+  <input id="slhienco" name="slhienco" placeholder="vd: 50" class="form-control input-md" type="number" min="1">
     
   </div>
 </div>

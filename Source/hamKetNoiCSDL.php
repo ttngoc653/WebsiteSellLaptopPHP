@@ -151,6 +151,15 @@
         $tinhtranghientai=($tinhtranghientai+1)%2;
         ConnectQuery("update don_hang set dagiao='".$tinhtranghientai."' where madh like '".$madh."'");
     }
+    function doiQuyenNgdung($name){
+        $hientai=0;
+        $rc=ConnectQuery("select quyen from nguoi_dung where tendn like '".$name."'");
+        while ($row=$rc->fetch_assoc()) {
+            $hientai=$row['quyen'];
+        }
+        $hientai=($hientai+1)%2;
+        ConnectQuery("update nguoi_dung set quyen='".$hientai."' where tendn like '".$name."'");
+    }
     function TenNguoiDung($makh){
         $rs=ConnectQuery("select hoten from nguoi_dung where tendn like '".$makh."'");
         while($row=$rs->fetch_assoc()){
