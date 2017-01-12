@@ -43,19 +43,7 @@
 			$rom=$_GET['rom'];
 		}
 
-		if(isset($_GET['page'])){
-			$sptu=($_GET['page']-1)*10;
-			$rs=ConnectQuery($_SESSION['sql']['name']." limit ".$sptu.",10");
-		}
-        else{
-        	$_SESSION['sql']['name']="select * from cpu,san_pham where san_pham.loaicpu like cpu.loai and san_pham.tensp like '%".$tensp."%' and san_pham.hangsx like '%".$hang."%' and hdh like '%".$hdh."%' and san_pham.gia BETWEEN '".$giatu."' AND '".$giaden."' and ramdungluong like '%".$ram."%' and san_pham.masp in(SELECT o_dia_cung.masp from o_dia_cung GROUP BY o_dia_cung.masp HAVING sum(o_dia_cung.dungluong) like '%".$rom."%') AND san_pham.loaicpu in (SELECT cpu.loai FROM cpu WHERE cpu.congnghe like '%".$cpu."%') and san_pham.tencartmanhinh in (SELECT cart_man_hinh.tencart FROM cart_man_hinh WHERE cart_man_hinh.thietke like '%".$dohoa."%')";
-        	$rs=ConnectQuery($_SESSION['sql']['name']);
-        	$slSP=$rs->num_rows;
-        	$_SESSION['sql']['trang']=round($slSP/10);
-        	if((($slSP%10)<5)&&($slSP%10)!=0)
-        		$_SESSION['sql']['trang']=$_SESSION['sql']['trang']+1;
-        	$rs=ConnectQuery($_SESSION['sql']['name']." limit 0,10");
-        }
+
 ?>
 <div class="panel panel-default" style="opacity: 0.9">
 	<div class="panel-heading">
