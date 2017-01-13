@@ -13,14 +13,14 @@
  		</dt>
  		<dt><a href="" title=""><button style="width: 200px;">GIÁ SẢN PHẨM</button></a>
  			<dl>
- 				<dt><a href="index.php?act=timkiem&tu=0&den=5" title="">nhỏ hơn 5 triệu đồng</a></dt>
- 				<dt><a href="index.php?act=timkiem&tu=5&den=8" title="">từ hơn 5 đến 8 triệu đồng</a></dt>
- 				<dt><a href="index.php?act=timkiem&tu=8&den=11" title="">từ hơn 8 - 11 triệu đồng</a></dt>
- 				<dt><a href="index.php?act=timkiem&tu=11&den=14" title="">từ hơn 11 - 14 triệu đồng</a></dt>
- 				<dt><a href="index.php?act=timkiem&tu=14&den=17" title="">từ hơn 14 - 17 triệu đồng</a></dt>
- 				<dt><a href="index.php?act=timkiem&tu=17&den=20" title="">từ hơn 17 - 20 triệu đồng</a></dt>
- 				<dt><a href="index.php?act=timkiem&tu=20&den=23" title="">từ hơn 20 - 23 triệu đồng</a></dt>
- 				<dt><a href="index.php?act=timkiem&tu=23&den=26" title="">từ hơn 23 - 26 triệu đồng</a></dt><dt><a href="index.php?act=timkiem&tu=26&den=1000" title="">hơn 26 triệu đồng</a></dt>
+ 				<dt><a href="index.php?act=timkiem&tu=0&den=50" title="">nhỏ hơn 5 triệu đồng</a></dt>
+ 				<dt><a href="index.php?act=timkiem&tu=50&den=80" title="">từ hơn 5 đến 8 triệu đồng</a></dt>
+ 				<dt><a href="index.php?act=timkiem&tu=80&den=110" title="">từ hơn 8 - 11 triệu đồng</a></dt>
+ 				<dt><a href="index.php?act=timkiem&tu=110&den=140" title="">từ hơn 11 - 14 triệu đồng</a></dt>
+ 				<dt><a href="index.php?act=timkiem&tu=140&den=170" title="">từ hơn 14 - 17 triệu đồng</a></dt>
+ 				<dt><a href="index.php?act=timkiem&tu=170&den=200" title="">từ hơn 17 - 20 triệu đồng</a></dt>
+ 				<dt><a href="index.php?act=timkiem&tu=200&den=230" title="">từ hơn 20 - 23 triệu đồng</a></dt>
+ 				<dt><a href="index.php?act=timkiem&tu=230&den=260" title="">từ hơn 23 - 26 triệu đồng</a></dt><dt><a href="index.php?act=timkiem&tu=26&den=1000" title="">hơn 26 triệu đồng</a></dt>
  			</dl>
  		</dt>
  		<dt><a href="" title=""><button style="width: 150px;">LOẠI CPU</button></a>
