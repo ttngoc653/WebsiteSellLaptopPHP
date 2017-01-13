@@ -8,6 +8,10 @@
 			doiQuyenNgdung($_GET['doiquyen']);
 			echo "<script type=\"text/javascript\" charset=\"utf-8\" async defer>window.history.back(); </script>";
 		}
+		if(isset($_GET['xoangdung'])){
+			ConnectQuery("delete from nguoi_dung where tendn like '".$_GET['xoangdung']."'");
+			echo "<script type=\"text/javascript\" charset=\"utf-8\" async defer>window.history.back(); </script>";
+		}
 ?>
 
 <div class="panel panel-default" style="opacity: 0.9">
@@ -23,7 +27,7 @@
 					<th width="200px" style="text-align: center;">TÊN ĐĂNG NHẬP <br/>HỌ TÊN NGƯỜI DÙNG</th>
 					<th width="200px" style="text-align: center;">NGÀY SINH <br/>GIỚI TÍNH</th>
 					<th width="200px" style="text-align: center;">EMAIL<br/>ĐIỆN THOẠI</th>
-					<th width="200px" style="text-align: center;">ĐỔI QUYỀN</th>
+					<th width="200px" style="text-align: center;">ĐỔI QUYỀN<br/>XÓA</th>
 				</tr>
 			</thead>
 <?php
@@ -35,7 +39,9 @@
 					<td style="text-align: center;"><?php echo $row['tendn']."<br/>".$row['hoten']; ?></td>
 					<td style="text-align: center;"><?php echo $row['ngsinh']."<br/>".$row['gioitinh']; ?></td>
 					<td style="text-align: center;"><?php echo $row['email']."<br/>".$row['sdt']; ?></td>
-					<td style="text-align: center;"><a href="index.php?act=qlngdung&doiquyen=<?php echo $row['tendn']; ?>" title="">ĐỔI QUYỀN</a></td>
+					<td style="text-align: center;"><a href="index.php?act=qlngdung&doiquyen=<?php echo $row['tendn']; ?>" title="">ĐỔI QUYỀN</a><br/>
+							<a href="index.php?act=qlngdung&xoangdung=<?php echo $row['tendn']; ?>" title="">XÓA</a>
+					</td>
 				</tr>
 			</tbody>
 <?php } ?>
